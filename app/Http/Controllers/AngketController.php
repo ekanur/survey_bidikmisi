@@ -7,13 +7,15 @@ use App\Angket;
 
 class AngketController extends Controller
 {
-    public function index($calond_penerima_id){
-        return view("angket");
+    public function index($calon_penerima_id){
+        $nim_surveyor = 1533430596;
+        $angket = Angket::select('id', 'item_kuesioner')->where([['calon_penerima_id', "=" ,$calon_penerima_id],["nim_surveyor", "=", $nim_surveyor]])->get();
+        // dd($angket);
+        return view("angket", compact('angket'));
     }
 
     public function simpan(Request $request){
-        $angket = new Angket;
-
+        
         $nama_ayah = array("ayah"=>array("value"=>$request->ayah, "keterangan"=>$request->keterangan_ayah));
         $nama_ibu = array("ibu"=>array("value"=>$request->ibu, "keterangan"=>$request->keterangan_ibu));
         $kerja_ayah = array("kerja_ayah"=>array("value"=>$request->kerja_ayah, "keterangan"=>$request->keterangan_kerja_ayah));
@@ -26,7 +28,7 @@ class AngketController extends Controller
         $alat_komunikasi = array("alat_komunikasi"=>$request->komunikasi, "jumlah_hp"=>$request->jumlah_hp);
         $jumlah_penghuni_rumah = array("jumlah_penghuni_rumah"=>$request->jumlah_penghuni_rumah);
         $jumlah_kakak = array("jumlah_kakak"=>$request->jumlah_kakak);
-        $jumlah_adek = array("jumlah_kakak"=>$request->jumlah_adek);
+        $jumlah_adek = array("jumlah_adek"=>$request->jumlah_adek);
         $jumlah_kuliah = array("jumlah_kuliah"=>$request->jumlah_kuliah);
         $kepemilikan_rumah = array("kepemilikan_rumah"=>$request->kepemilikan_rumah);
         $luas_tanah = array("luas_tanah"=>$request->luas_tanah);
@@ -34,12 +36,48 @@ class AngketController extends Controller
         $daya_listrik = array("daya_listrik"=>$request->daya_listrik);
         $sumber_air = array("sumber_air"=>$request->sumber_air);
         $mck = array("mck"=>$request->mck);
-        $motor = array("motor"=>$request->motor);
-        $mobil = array("motor"=>$request->mobil);
+        $motor = array("motor"=>json_decode("[".$request->motor."]"));
+        $mobil = array("mobil"=>json_decode("[".$request->mobil."]"));
         
         $luas_sawah = array("luas_sawah"=>$request->luas_sawah);
         $ternak = array("ternak"=>array("jenis"=>$request->ternak, "jumlah_ternak"=>$request->jumlah_ternak));
         $catatan = array("catatan"=>$request->catatan);
+
+        $calond_penerima_id = 1;
+        $nim_surveyor = 1533430596;
+        $timestamp = date("Y-m-d H:i:s");
+
+        $new_angket = array(
+            array('item_kuesioner'=>json_encode($nama_ayah), "calon_penerima_id"=>$calond_penerima_id, "nim_surveyor"=>$nim_surveyor, "created_at"=>$timestamp),
+            array('item_kuesioner'=>json_encode($nama_ibu), "calon_penerima_id"=>$calond_penerima_id, "nim_surveyor"=>$nim_surveyor, "created_at"=>$timestamp),
+            array('item_kuesioner'=>json_encode($kerja_ayah), "calon_penerima_id"=>$calond_penerima_id, "nim_surveyor"=>$nim_surveyor, "created_at"=>$timestamp),
+            array('item_kuesioner'=>json_encode($kerja_ibu), "calon_penerima_id"=>$calond_penerima_id, "nim_surveyor"=>$nim_surveyor, "created_at"=>$timestamp),
+            array('item_kuesioner'=>json_encode($pendidikan_ayah_ibu), "calon_penerima_id"=>$calond_penerima_id, "nim_surveyor"=>$nim_surveyor, "created_at"=>$timestamp),
+            array('item_kuesioner'=>json_encode($penghasilan_ayah), "calon_penerima_id"=>$calond_penerima_id, "nim_surveyor"=>$nim_surveyor, "created_at"=>$timestamp),
+            array('item_kuesioner'=>json_encode($penghasilan_ibu), "calon_penerima_id"=>$calond_penerima_id, "nim_surveyor"=>$nim_surveyor, "created_at"=>$timestamp),
+            array('item_kuesioner'=>json_encode($penghasilan_wali), "calon_penerima_id"=>$calond_penerima_id, "nim_surveyor"=>$nim_surveyor, "created_at"=>$timestamp),
+            array('item_kuesioner'=>json_encode($alat_komunikasi), "calon_penerima_id"=>$calond_penerima_id, "nim_surveyor"=>$nim_surveyor, "created_at"=>$timestamp),
+            array('item_kuesioner'=>json_encode($jumlah_penghuni_rumah), "calon_penerima_id"=>$calond_penerima_id, "nim_surveyor"=>$nim_surveyor, "created_at"=>$timestamp),
+            array('item_kuesioner'=>json_encode($jumlah_kakak), "calon_penerima_id"=>$calond_penerima_id, "nim_surveyor"=>$nim_surveyor, "created_at"=>$timestamp),
+            array('item_kuesioner'=>json_encode($jumlah_adek), "calon_penerima_id"=>$calond_penerima_id, "nim_surveyor"=>$nim_surveyor, "created_at"=>$timestamp),
+            array('item_kuesioner'=>json_encode($jumlah_kuliah), "calon_penerima_id"=>$calond_penerima_id, "nim_surveyor"=>$nim_surveyor, "created_at"=>$timestamp),
+            array('item_kuesioner'=>json_encode($kepemilikan_rumah), "calon_penerima_id"=>$calond_penerima_id, "nim_surveyor"=>$nim_surveyor, "created_at"=>$timestamp),
+            array('item_kuesioner'=>json_encode($luas_tanah), "calon_penerima_id"=>$calond_penerima_id, "nim_surveyor"=>$nim_surveyor, "created_at"=>$timestamp),
+            array('item_kuesioner'=>json_encode($luas_bangunan), "calon_penerima_id"=>$calond_penerima_id, "nim_surveyor"=>$nim_surveyor, "created_at"=>$timestamp),
+            array('item_kuesioner'=>json_encode($daya_listrik), "calon_penerima_id"=>$calond_penerima_id, "nim_surveyor"=>$nim_surveyor, "created_at"=>$timestamp),
+            array('item_kuesioner'=>json_encode($sumber_air), "calon_penerima_id"=>$calond_penerima_id, "nim_surveyor"=>$nim_surveyor, "created_at"=>$timestamp),
+            array('item_kuesioner'=>json_encode($mck), "calon_penerima_id"=>$calond_penerima_id, "nim_surveyor"=>$nim_surveyor, "created_at"=>$timestamp),
+            array('item_kuesioner'=>json_encode($motor), "calon_penerima_id"=>$calond_penerima_id, "nim_surveyor"=>$nim_surveyor, "created_at"=>$timestamp),
+            array('item_kuesioner'=>json_encode($mobil), "calon_penerima_id"=>$calond_penerima_id, "nim_surveyor"=>$nim_surveyor, "created_at"=>$timestamp),
+            array('item_kuesioner'=>json_encode($luas_sawah), "calon_penerima_id"=>$calond_penerima_id, "nim_surveyor"=>$nim_surveyor, "created_at"=>$timestamp),
+            array('item_kuesioner'=>json_encode($ternak), "calon_penerima_id"=>$calond_penerima_id, "nim_surveyor"=>$nim_surveyor, "created_at"=>$timestamp),
+            array('item_kuesioner'=>json_encode($catatan), "calon_penerima_id"=>$calond_penerima_id, "nim_surveyor"=>$nim_surveyor, "created_at"=>$timestamp),
+        );
+
+        $angket = Angket::insert($new_angket);
+
+        return redirect()->back();
+        // dd($new_angket);
         // dd(json_decode("[".$request->motor."]"));
     }
 }

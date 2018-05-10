@@ -414,7 +414,7 @@
                                     <input type="text" class="form-control" id="" placeholder="jenis" name="ternak">
                                 </div>
                                 <div class="col-sm-4">
-                                        <input type="number" name=" " class="form-control" id="" placeholder="jumlah">
+                                        <input type="number" name="jumlah_ternak" class="form-control" id="" placeholder="jumlah">
                                 </div>
                             </div>
                             <div class="form-group row">
