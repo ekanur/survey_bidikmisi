@@ -16,6 +16,10 @@
         <form action="{{ url('/foto/save') }}" method="post" enctype="multipart/form-data">
             {{ csrf_field() }}
             <input type="hidden" name="calon_penerima_id" value="1">
+            {{-- <input type="hidden" name="nim_surveyor" value="1533430596"> --}}
+            <input type="hidden" name="foto_bersama_lama" value="{{ $path_foto['bersama'] }}">
+            <input type="hidden" name="foto_dapur_lama" value="{{ $path_foto['dapur'] }}">
+            <input type="hidden" name="foto_kamar_mandi_lama" value="{{ $path_foto['kamar_mandi'] }}">
         <div class="row">
             <div class="col-md-12">
                 <div class="card">
@@ -49,11 +53,12 @@
                                     <input name="foto_bersama" type="file" accept="image/*" class="form-control">
                                 </div>
                                 <div class="col-md-12">
-                                    <img id="preview_foto_bersama" src="{{asset("/img/preview.jpg")}}" alt="Preview" class="img-fluid img-thumbnail" style="margin-top:1.9em; width: 100%;height:auto"/>
+                                    <img id="preview_foto_bersama" src="@if($path_foto['bersama'] != "") {{ Storage::url($path_foto['bersama']) }} @else {{asset("/img/preview.jpg")}} @endif" alt="Preview" class="img-fluid img-thumbnail" style="margin-top:1.9em; width: 100%;height:auto"/>
                                 </div>
                         </div>
                     </div>
                 </div>
+                
             </div>
             <div class="col-md-4">
                 <div class="card">
@@ -66,7 +71,7 @@
                                         <input name="foto_dapur" type="file" accept="image/*" class="form-control">
                                 </div>
                                 <div class="col-md-12">
-                                    <img id="preview_foto_dapur" src="{{asset("/img/preview.jpg")}}" alt="Preview" class="img-fluid img-thumbnail" style="margin-top:1.9em; width: 100%;height:auto"/>
+                                    <img id="preview_foto_dapur" src="@if($path_foto['dapur'] != "") {{ Storage::url($path_foto['dapur']) }} @else {{asset("/img/preview.jpg")}} @endif" alt="Preview" class="img-fluid img-thumbnail" style="margin-top:1.9em; width: 100%;height:auto"/>
                                 </div>
                         </div>
                     </div>
@@ -83,7 +88,7 @@
                                                 <input name="foto_kamar_mandi" type="file" accept="image/*" class="form-control">
                                         </div>
                                         <div class="col-md-12">
-                                            <img id="preview_foto_kamar_mandi" src="{{asset("/img/preview.jpg")}}" alt="Preview" class="img-fluid img-thumbnail" style="margin-top:1.9em; width: 100%;height:auto"/>
+                                            <img id="preview_foto_kamar_mandi" src="@if($path_foto['kamar_mandi'] != "") {{ Storage::url($path_foto['kamar_mandi']) }} @else {{asset("/img/preview.jpg")}} @endif" alt="Preview" class="img-fluid img-thumbnail" style="margin-top:1.9em; width: 100%;height:auto"/>
                                         </div>
                                 </div>
                         </div>

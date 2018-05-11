@@ -49,30 +49,30 @@
                                     </tr>
                                     <tr>
                                         <td>
-                                            MELENIA AYU SAPUTRI
+                                            SAHRUL ANWAR
                                         </td>
                                         <td>
-                                            Tulungagung
+                                            Semarang
                                         </td>
                                         <td>
-                                            MAN 2 Tulungagung
+                                            SMAN 2 Semarang
                                         </td>
                                         <td class="text-right">
-                                            <a href="{{ url("/angket/1") }}"><i class="now-ui-icons files_single-copy-04"></i></a>
+                                            <a href="{{ url("/angket/2") }}"><i class="now-ui-icons files_single-copy-04"></i></a>
                                         </td>
                                     </tr>
                                     <tr>
                                             <td>
-                                                MELENIA AYU SAPUTRI
+                                                HERU PRASETYA
                                             </td>
                                             <td>
-                                                Tulungagung
+                                                Kediri
                                             </td>
                                             <td>
-                                                MAN 2 Tulungagung
+                                                SMKN 1 Kediri
                                             </td>
                                             <td class="text-right">
-                                                <a href="{{ url("/angket/1") }}"><i class="now-ui-icons files_single-copy-04"></i></a>
+                                                <a href="{{ url("/angket/3") }}"><i class="now-ui-icons files_single-copy-04"></i></a>
                                             </td>
                                         </tr>
                                    

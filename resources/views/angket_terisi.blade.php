@@ -103,12 +103,12 @@
                                 </div>
                                 <div class="col-sm-2">
                                     <select name="ayah" id="" class="form-control">
-                                        <option value="1">Ya</option>
-                                        <option value="0">Tidak</option>
+                                        <option value="1" @if($data_angket['ayah']->value == 1) selected @endif>Ya</option>
+                                        <option value="0" @if($data_angket['ayah']->value == 0) selected @endif>Tidak</option>
                                     </select>
                                 </div>
                                 <div class="col-sm-3">
-                                    <input type="text" class="form-control"  name="keterangan_ayah" placeholder="Keterangan">
+                                    <input type="text" class="form-control"  name="keterangan_ayah" placeholder="Keterangan" value="{{ $data_angket["ayah"]->keterangan }}">
                                 </div>
                             </div>
                             <div class="form-group row">
@@ -118,12 +118,12 @@
                                 </div>
                                 <div class="col-sm-2">
                                     <select name="ibu" id="" class="form-control">
-                                        <option value="1">Ya</option>
-                                        <option value="0">Tidak</option>
+                                        <option value="1"@if($data_angket['ibu']->value == 1) selected @endif>Ya</option>
+                                        <option value="0"@if($data_angket['ibu']->value == 0) selected @endif>Tidak</option>
                                     </select>
                                 </div>
                                 <div class="col-sm-3">
-                                    <input type="text" class="form-control"  name="keterangan_ibu" placeholder="Keterangan">
+                                    <input type="text" class="form-control"  name="keterangan_ibu" placeholder="Keterangan" value="{{ $data_angket["ibu"]->keterangan }}">
                                 </div>
                             </div>
                             <div class="form-group row">
@@ -133,12 +133,12 @@
                                 </div>
                                 <div class="col-sm-2">
                                     <select name="kerja_ayah" id="" class="form-control">
-                                        <option value="1">Ya</option>
-                                        <option value="0">Tidak</option>
+                                        <option value="1"@if($data_angket['kerja_ayah']->value == 1) selected @endif>Ya</option>
+                                        <option value="0"@if($data_angket['kerja_ayah']->value == 0) selected @endif>Tidak</option>
                                     </select>
                                 </div>
                                 <div class="col-sm-3">
-                                    <input type="text" class="form-control"  name="keterangan_kerja_ayah" placeholder="Keterangan">
+                                    <input type="text" class="form-control"  name="keterangan_kerja_ayah" placeholder="Keterangan" value="{{ $data_angket["kerja_ayah"]->keterangan }}">
                                 </div>
                             </div>
                             <div class="form-group row">
@@ -148,12 +148,12 @@
                                 </div>
                                 <div class="col-sm-2">
                                     <select name="kerja_ibu" id="" class="form-control">
-                                        <option value="1">Ya</option>
-                                        <option value="0">Tidak</option>
+                                        <option value="1"@if($data_angket['kerja_ibu']->value == 1) selected @endif>Ya</option>
+                                        <option value="0"@if($data_angket['kerja_ibu']->value == 0) selected @endif>Tidak</option>
                                     </select>
                                 </div>
                                 <div class="col-sm-3">
-                                    <input type="text" class="form-control"  name="keterangan_kerja_ibu" placeholder="Keterangan">
+                                    <input type="text" class="form-control"  name="keterangan_kerja_ibu" placeholder="Keterangan" value="{{ $data_angket["kerja_ibu"]->keterangan }}">
                                 </div>
                             </div>
                             <div class="form-group row">
@@ -163,12 +163,12 @@
                                 </div>
                                 <div class="col-sm-2">
                                     <select name="pendidikan_ayah_ibu" id="" class="form-control">
-                                        <option value="1">Ya</option>
-                                        <option value="0">Tidak</option>
+                                        <option value="1"@if($data_angket['pendidikan_ayah_ibu']->value == 1) selected @endif>Ya</option>
+                                        <option value="0"@if($data_angket['pendidikan_ayah_ibu']->value == 0) selected @endif>Tidak</option>
                                     </select>
                                 </div>
                                 <div class="col-sm-3">
-                                    <input type="text" class="form-control"  name="keterangan_pendidikan_ayah_ibu" placeholder="Keterangan">
+                                    <input type="text" class="form-control"  name="keterangan_pendidikan_ayah_ibu" placeholder="Keterangan" value="{{ $data_angket["pendidikan_ayah_ibu"]->keterangan }}">
                                 </div>
                             </div>
                             <div class="form-group row">
@@ -178,18 +178,18 @@
                                 </div>
                                 <div class="col-sm-3">
                                     <select name="jenis_penghasilan_ayah" id="" class="form-control">
-                                        <option value="1">Penghasilan Tetap</option>
-                                        <option value="0">Penghasilan Tidak Tetap</option>
+                                        <option value="1" @if($data_angket['penghasilan_ayah']->jenis == 1) selected @endif>Penghasilan Tetap</option>
+                                        <option value="0"@if($data_angket['penghasilan_ayah']->jenis == 0) selected @endif>Penghasilan Tidak Tetap</option>
                                     </select>
                                 </div>
                                 <div class="col-sm-2">
                                     <select name="penghasilan_ayah" id="" class="form-control">
-                                        <option value="1">Ya</option>
-                                        <option value="0">Tidak</option>
+                                        <option value="1"@if($data_angket['penghasilan_ayah']->value == 1) selected @endif>Ya</option>
+                                        <option value="0"@if($data_angket['penghasilan_ayah']->value == 0) selected @endif>Tidak</option>
                                     </select>
                                 </div>
                                 <div class="col-sm-3">
-                                    <input type="text" class="form-control"  name="keterangan_penghasilan_ayah" placeholder="Keterangan">
+                                    <input type="text" class="form-control"  name="keterangan_penghasilan_ayah" placeholder="Keterangan" value="{{ $data_angket["penghasilan_ayah"]->keterangan }}">
                                 </div>
                             </div>
                             <div class="form-group row">
@@ -199,18 +199,18 @@
                                 </div>
                                 <div class="col-sm-3">
                                     <select name="jenis_penghasilan_ibu" id="" class="form-control">
-                                        <option value="1">Penghasilan Tetap</option>
-                                        <option value="0">Penghasilan Tidak Tetap</option>
+                                        <option value="1" @if($data_angket['penghasilan_ibu']->jenis == 1) selected @endif>Penghasilan Tetap</option>
+                                        <option value="0" @if($data_angket['penghasilan_ibu']->jenis == 0) selected @endif>Penghasilan Tidak Tetap</option>
                                     </select>
                                 </div>
                                 <div class="col-sm-2">
                                     <select name="penghasilan_ibu" id="" class="form-control">
-                                        <option value="1">Ya</option>
-                                        <option value="0">Tidak</option>
+                                        <option value="1" @if($data_angket['penghasilan_ibu']->value == 1) selected @endif>Ya</option>
+                                        <option value="0" @if($data_angket['penghasilan_ibu']->value == 0) selected @endif>Tidak</option>
                                     </select>
                                 </div>
                                 <div class="col-sm-3">
-                                    <input type="text" class="form-control"  name="keterangan_penghasilan_ibu" placeholder="Keterangan">
+                                    <input type="text" class="form-control"  name="keterangan_penghasilan_ibu" placeholder="Keterangan" value="{{ $data_angket["penghasilan_ibu"]->keterangan }}">
                                 </div>
                             </div>
                             <div class="form-group row">
@@ -220,18 +220,18 @@
                                 </div>
                                 <div class="col-sm-3">
                                     <select name="jenis_penghasilan_wali" id="" class="form-control">
-                                        <option value="1">Penghasilan Tetap</option>
-                                        <option value="0">Penghasilan Tidak Tetap</option>
+                                        <option value="1"  @if($data_angket['penghasilan_wali']->jenis == 1) selected @endif>Penghasilan Tetap</option>
+                                        <option value="0" @if($data_angket['penghasilan_wali']->jenis == 0) selected @endif>Penghasilan Tidak Tetap</option>
                                     </select>
                                 </div>
                                 <div class="col-sm-2">
                                     <select name="penghasilan_wali" id="" class="form-control">
-                                        <option value="1">Ya</option>
-                                        <option value="0">Tidak</option>
+                                        <option value="1" @if($data_angket['penghasilan_wali']->value == 1) selected @endif>Ya</option>
+                                        <option value="0"  @if($data_angket['penghasilan_wali']->value == 0) selected @endif>Tidak</option>
                                     </select>
                                 </div>
                                 <div class="col-sm-3">
-                                    <input type="text" class="form-control"  name="keterangan_penghasilan_wali" placeholder="Keterangan">
+                                    <input type="text" class="form-control"  name="keterangan_penghasilan_wali" placeholder="Keterangan" value="{{ $data_angket["penghasilan_wali"]->keterangan }}">
                                 </div>
                             </div>
                             <div class="form-group row">
@@ -247,7 +247,7 @@
                                         <div class="form-check form-check-inline">
                                             <label class="form-check-label">
                                                 <input class="form-check-input" type="checkbox" name="komunikasi[]" value="hp">
-                                                <span class="form-check-sign">Handphone (<span id="hp">0</span> buah)</span>
+                                                <span class="form-check-sign">Handphone (<span id="hp">@if($data_angket['alat_komunikasi']->jumlah_hp!=0) {{$data_angket['alat_komunikasi']->jumlah_hp}} @else 0 @endif</span> buah)</span>
                                             </label>
                                         </div>
                                         <div class="form-check form-check-inline">
@@ -263,22 +263,22 @@
                             <div class="form-group row">
                                 <label for="" class="col-sm-2 col-form-label">Jumlah penghuni rumah</label>
                                 <div class="col-sm-7">
-                                    <input name="jumlah_penghuni_rumah" type="number" min=0 class="form-control" id="">
+                                    <input name="jumlah_penghuni_rumah" type="number" min=0 class="form-control" id="" value="{{ $data_angket["jumlah_penghuni_rumah"] }}">
                                     <!-- <textarea name="" id="" cols="30" rows="10" class="form-control">RT 002 RW 008 DSN. TANGGUNG DS. TANGGUNG KEC. CAMPURDARAT KABUPATEN TULUNGAGUNG, JATIM</textarea> -->
                                 </div>
                             </div>
                             <div class="form-group row">
                                 <label for="" class="col-sm-2 col-form-label">Jumlah saudara</label>
                                 <div class="col-sm-2">
-                                    <input type="number" placeholder="Kakak" min=0 class="form-control" id="" name="jumlah_kakak">
+                                    <input type="number" placeholder="Kakak" min=0 class="form-control" id="" name="jumlah_kakak" value="{{ $data_angket["jumlah_kakak"] }}">
                                     <!-- <textarea name="" id="" cols="30" rows="10" class="form-control">RT 002 RW 008 DSN. TANGGUNG DS. TANGGUNG KEC. CAMPURDARAT KABUPATEN TULUNGAGUNG, JATIM</textarea> -->
                                 </div>
                                 <div class="col-sm-2">
-                                    <input type="number" placeholder="Adik" min=0 class="form-control" id="" name="jumlah_adek">
+                                    <input type="number" placeholder="Adik" min=0 class="form-control" id="" name="jumlah_adek" value="{{ $data_angket["jumlah_adek"] }}">
                                     <!-- <textarea name="" id="" cols="30" rows="10" class="form-control">RT 002 RW 008 DSN. TANGGUNG DS. TANGGUNG KEC. CAMPURDARAT KABUPATEN TULUNGAGUNG, JATIM</textarea> -->
                                 </div>
                                 <div class="col-sm-3">
-                                        <input type="number" placeholder="yang kuliah" min=0 class="form-control" id="" name="jumlah_kuliah">
+                                        <input type="number" placeholder="yang kuliah" min=0 class="form-control" id="" name="jumlah_kuliah" value="{{ $data_angket["jumlah_kuliah"] }}">
                                         <!-- <textarea name="" id="" cols="30" rows="10" class="form-control">RT 002 RW 008 DSN. TANGGUNG DS. TANGGUNG KEC. CAMPURDARAT KABUPATEN TULUNGAGUNG, JATIM</textarea> -->
                                     </div>
                             </div>
@@ -402,7 +402,7 @@
                             <div class="form-group row">
                                 <label for="" class="col-sm-2 col-form-label">Sawah (Luas)</label>
                                 <div class="col-sm-8">
-                                    <input type="number" class="form-control" id="" name="luas_sawah">
+                                    <input type="number" class="form-control" id="" name="luas_sawah"  value="{{ $data_angket["luas_sawah"] }}">
                                 </div>
                                 <div class="col-sm-2">
                                     <strong>m <sup>2</sup></strong>
@@ -411,16 +411,16 @@
                             <div class="form-group row">
                                 <label for="" class="col-sm-2 col-form-label">Ternak (Jenis/Jumlah)</label>
                                 <div class="col-sm-4">
-                                    <input type="text" class="form-control" id="" placeholder="jenis" name="ternak">
+                                    <input type="text" class="form-control" id="" placeholder="jenis" name="ternak"  value="{{ $data_angket["ternak"]->jenis }}">
                                 </div>
                                 <div class="col-sm-4">
-                                        <input type="number" name="jumlah_ternak" class="form-control" id="" placeholder="jumlah">
+                                        <input type="number" name="jumlah_ternak" class="form-control" id="" placeholder="jumlah"  value="{{ $data_angket["ternak"]->jumlah_ternak }}">
                                 </div>
                             </div>
                             <div class="form-group row">
                                 <label for="" class="col-sm-2 col-form-label">Catatan</label>
                                 <div class="col-sm-8">
-                                    <textarea name="catatan" class="form-control" id="" cols="30" rows="10"></textarea>
+                                <textarea name="catatan" class="form-control" id="" cols="30" rows="10">{{ $data_angket['catatan'] }}</textarea>
                                 </div>
                             </div>
                             {{-- <div class="form-group row">

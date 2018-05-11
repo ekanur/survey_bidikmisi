@@ -9,9 +9,30 @@ class AngketController extends Controller
 {
     public function index($calon_penerima_id){
         $nim_surveyor = 1533430596;
-        $angket = Angket::select('id', 'item_kuesioner')->where([['calon_penerima_id', "=" ,$calon_penerima_id],["nim_surveyor", "=", $nim_surveyor]])->get();
-        // dd($angket);
-        return view("angket", compact('angket'));
+        $angket = Angket::select('id', 'item_kuesioner')->where([['calon_penerima_id', "=" ,$calon_penerima_id],["nim_surveyor", "=", $nim_surveyor],['keterangan', '=', null]])->get();
+        
+        foreach($angket as $angket_data){
+            // var_dump($angket['item_kuesioner']);
+            $angket_data["item_kuesioner"] = json_decode($angket_data["item_kuesioner"]);
+        }
+
+        if(sizeof($angket)==0){
+            return view("angket", compact("calon_penerima_id"));
+        }
+
+        // dd(sizeof($angket));
+
+        for($i=0 ; $i<sizeof($angket); $i++){
+            $key = key($angket[$i]['item_kuesioner']);
+            $data_angket[$key] =  $angket[$i]['item_kuesioner']->$key;
+            
+            // echo "<pre>";var_dump($angket[key($angket[$i]['item_kuesioner'])]); echo $i;
+            // $angket[key($angket[$i]['item_kuesioner'])] = "hello";
+        }
+        // exit();
+        // dd($data_angket);
+
+        return view("angket_terisi", compact('data_angket', 'calon_penerima_id'));
     }
 
     public function simpan(Request $request){
@@ -25,7 +46,7 @@ class AngketController extends Controller
         $penghasilan_ibu = array("penghasilan_ibu"=>array("value"=>$request->penghasilan_ibu, "jenis"=>$request->jenis_penghasilan_ibu, "keterangan"=>$request->keterangan_penghasilan_ibu));
         $penghasilan_wali = array("penghasilan_wali"=>array("value"=>$request->penghasilan_wali, "jenis"=>$request->jenis_penghasilan_wali, "keterangan"=>$request->keterangan_penghasilan_wali));
         
-        $alat_komunikasi = array("alat_komunikasi"=>$request->komunikasi, "jumlah_hp"=>$request->jumlah_hp);
+        $alat_komunikasi = array("alat_komunikasi"=>array("value"=>$request->komunikasi, "jumlah_hp"=>$request->jumlah_hp));
         $jumlah_penghuni_rumah = array("jumlah_penghuni_rumah"=>$request->jumlah_penghuni_rumah);
         $jumlah_kakak = array("jumlah_kakak"=>$request->jumlah_kakak);
         $jumlah_adek = array("jumlah_adek"=>$request->jumlah_adek);
