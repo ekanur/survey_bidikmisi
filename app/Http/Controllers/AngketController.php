@@ -101,4 +101,8 @@ class AngketController extends Controller
         // dd($new_angket);
         // dd(json_decode("[".$request->motor."]"));
     }
+
+    public function update(Request $request){
+        return redirect()->back();
+    }
 }

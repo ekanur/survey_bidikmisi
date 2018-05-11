@@ -8,15 +8,17 @@ use App\Angket;
 
 class FotoController extends Controller
 {
-    public function index($calon_peneriman_id){
-        $angket = Angket::where([["calon_penerima_id", "=", $calon_peneriman_id], ["keterangan", '=', "is_photo"]])->first();
-
+    public function index($calon_penerima_id){
+        $angket = Angket::where([["calon_penerima_id", "=", $calon_penerima_id], ["keterangan", '=', "is_photo"]])->first();
+        // dd(sizeof($angket));
         
         $path_foto = array(
             "bersama" => ($angket == null)? "" : json_decode($angket->item_kuesioner)->foto->bersama,
             "dapur" => ($angket == null)? "" : json_decode($angket->item_kuesioner)->foto->dapur,
             "kamar_mandi" => ($angket == null)? "" : json_decode($angket->item_kuesioner)->foto->kamar_mandi,
         );
+
+        
 
         // dd(strlen($path_foto['bersama']));
         return view("foto", compact("path_foto", "calon_penerima_id"));

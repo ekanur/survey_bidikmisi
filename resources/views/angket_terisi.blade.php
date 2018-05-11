@@ -88,7 +88,7 @@
                 </div>
             </div>
             <div class="card">
-                <form action="{{ url('/angket/save') }}" method="post">
+                <form action="{{ url('/angket/update') }}" method="post">
                     {{ csrf_field() }}
                     <input type="hidden" name="calon_penerima_id" value="{{ $calon_penerima_id }}">
                     <div class="card-header">

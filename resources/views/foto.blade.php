@@ -15,7 +15,7 @@
     <div class="content">
         <form action="{{ url('/foto/save') }}" method="post" enctype="multipart/form-data">
             {{ csrf_field() }}
-            <input type="hidden" name="calon_penerima_id" value="1">
+            <input type="hidden" name="calon_penerima_id" value="{{ $calon_penerima_id }}">
             {{-- <input type="hidden" name="nim_surveyor" value="1533430596"> --}}
             <input type="hidden" name="foto_bersama_lama" value="{{ $path_foto['bersama'] }}">
             <input type="hidden" name="foto_dapur_lama" value="{{ $path_foto['dapur'] }}">
@@ -27,13 +27,13 @@
                     <div class="card-body">
                         <ul class="nav nav-pills nav-pills-primary nav-pills-icons justify-content-center" role="tablist">
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ url("/angket/1") }}" role="tablist">
+                                <a class="nav-link" href="{{ url("/angket/".$calon_penerima_id) }}" role="tablist">
                                     <i class="now-ui-icons files_single-copy-04"></i>
                                     Angket
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link active" href="{{ url("/foto/1") }}" role="tablist">
+                                <a class="nav-link active" href="{{ url("/foto/".$calon_penerima_id) }}" role="tablist">
                                     <i class="now-ui-icons design_image"></i>
                                     Foto
                                 </a>
