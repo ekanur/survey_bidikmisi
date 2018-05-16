@@ -10,14 +10,14 @@ class AngketController extends Controller
     public function index($calon_penerima_id){
         $nim_surveyor = 1533430596;
         $angket = Angket::select('id', 'item_kuesioner')->where([['calon_penerima_id', "=" ,$calon_penerima_id],["nim_surveyor", "=", $nim_surveyor],['keterangan', '=', null]])->get();
+
+        if(sizeof($angket)==0){
+            return view("angket", compact("calon_penerima_id"));
+        }
         
         foreach($angket as $angket_data){
             // var_dump($angket['item_kuesioner']);
             $angket_data["item_kuesioner"] = json_decode($angket_data["item_kuesioner"]);
-        }
-
-        if(sizeof($angket)==0){
-            return view("angket", compact("calon_penerima_id"));
         }
 
         // dd(sizeof($angket));

@@ -240,19 +240,19 @@
                                 <div class="col-sm-10">
                                         <div class="form-check form-check-inline">
                                             <label class="form-check-label">
-                                                <input class="form-check-input" type="checkbox" name="komunikasi[]" value="telepon_rumah">
+                                                <input class="form-check-input" type="checkbox" name="komunikasi[]" value="telepon_rumah" @if(in_array("telepon_rumah", $data_angket["alat_komunikasi"]->value)) checked @endif>
                                                 <span class="form-check-sign">Telepon Rumah</span>
                                             </label>
                                         </div>
                                         <div class="form-check form-check-inline">
                                             <label class="form-check-label">
-                                                <input class="form-check-input" type="checkbox" name="komunikasi[]" value="hp">
+                                                <input class="form-check-input" type="checkbox" name="komunikasi[]" value="hp" @if($data_angket['alat_komunikasi']->jumlah_hp>0) checked  @endif>
                                                 <span class="form-check-sign">Handphone (<span id="hp">@if($data_angket['alat_komunikasi']->jumlah_hp!=0) {{$data_angket['alat_komunikasi']->jumlah_hp}} @else 0 @endif</span> buah)</span>
                                             </label>
                                         </div>
                                         <div class="form-check form-check-inline">
                                             <label class="form-check-label">
-                                                <input class="form-check-input" type="checkbox" name="komunikasi[]" value="internet">
+                                                <input class="form-check-input" type="checkbox" name="komunikasi[]" value="internet" @if(in_array("internet", $data_angket["alat_komunikasi"]->value)) checked @endif>
                                                 <span class="form-check-sign">Internet rumah/TV Cable</span>
                                             </label>
                                         </div>
@@ -286,11 +286,11 @@
                                 <label for="" class="col-sm-2 col-form-label">Kepemilikan rumah</label>
                                 <div class="col-sm-4">
                                     <select name="kepemilikan_rumah" class="form-control" id="">
-                                        <option value="1">Milik sendiri</option>
-                                        <option value="2">Sewa tahunan</option>
-                                        <option value="3">Sewa bulanan</option>
-                                        <option value="4">Menempati milik orang lain</option>
-                                        <option value="5">Menempati milik keluarga</option>
+                                        <option value="1" @if($data_angket["kepemilikan_rumah"] == 1) selected @endif>Milik sendiri</option>
+                                        <option value="2" @if($data_angket["kepemilikan_rumah"] == 2) selected @endif>Sewa tahunan</option>
+                                        <option value="3" @if($data_angket["kepemilikan_rumah"] == 3) selected @endif>Sewa bulanan</option>
+                                        <option value="4" @if($data_angket["kepemilikan_rumah"] == 4) selected @endif>Menempati milik orang lain</option>
+                                        <option value="5" @if($data_angket["kepemilikan_rumah"] == 5) selected @endif>Menempati milik keluarga</option>
                                     </select>
                                 </div>
                                 <div class="col-sm-3">
@@ -301,10 +301,10 @@
                                 <label for="" class="col-sm-2 col-form-label">Luas Tanah</label>
                                 <div class="col-sm-4">
                                     <select name="luas_tanah" class="form-control" id="">
-                                        <option value="1"> > 200 m2</option>
-                                        <option value="2">100 - 200 m2</option>
-                                        <option value="3">50 - 99 m2</option>
-                                        <option value="5">< 25 m2</option>
+                                        <option value="1" @if($data_angket["luas_tanah"] == 1) selected @endif> > 200 m2</option>
+                                        <option value="2" @if($data_angket["luas_tanah"] == 2) selected @endif>100 - 200 m2</option>
+                                        <option value="3" @if($data_angket["luas_tanah"] == 3) selected @endif>50 - 99 m2</option>
+                                        <option value="4" @if($data_angket["luas_tanah"] == 4) selected @endif>< 25 m2</option>
                                     </select>
                                 </div>
                             </div>
@@ -312,10 +312,10 @@
                                 <label for="" class="col-sm-2 col-form-label">Luas Bangunan</label>
                                 <div class="col-sm-4">
                                     <select name="luas_bangunan" class="form-control" id="">
-                                        <option value="1"> > 200 m2</option>
-                                        <option value="2">100 - 200 m2</option>
-                                        <option value="3">50 - 99 m2</option>
-                                        <option value="4">< 50 m2</option>
+                                        <option value="1" @if($data_angket["luas_bangunan"] == 1) selected @endif> > 200 m2</option>
+                                        <option value="2" @if($data_angket["luas_bangunan"] == 2) selected @endif>100 - 200 m2</option>
+                                        <option value="3" @if($data_angket["luas_bangunan"] == 3) selected @endif>50 - 99 m2</option>
+                                        <option value="4" @if($data_angket["luas_bangunan"] == 4) selected @endif>< 50 m2</option>
                                     </select>
                                 </div>
                             </div>
@@ -323,11 +323,11 @@
                                 <label for="" class="col-sm-2 col-form-label">Daya Listrik</label>
                                 <div class="col-sm-4">
                                     <select name="daya_listrik" class="form-control" id="">
-                                        <option value="1"> > 2200 watt</option>
-                                        <option value="2">1300 watt</option>
-                                        <option value="3">900 watt</option>
-                                        <option value="4">450 watt</option>
-                                        <option value="5">tidak ada</option>
+                                        <option value="1" @if($data_angket["daya_listrik"] == 1) selected @endif> > 2200 watt</option>
+                                        <option value="2" @if($data_angket["daya_listrik"] == 2) selected @endif>1300 watt</option>
+                                        <option value="3" @if($data_angket["daya_listrik"] == 3) selected @endif>900 watt</option>
+                                        <option value="4" @if($data_angket["daya_listrik"] == 4) selected @endif>450 watt</option>
+                                        <option value="5" @if($data_angket["daya_listrik"] == 5) selected @endif>tidak ada</option>
                                     </select>
                                 </div>
                             </div>
@@ -335,10 +335,10 @@
                                 <label for="" class="col-sm-2 col-form-label">Sumber air</label>
                                 <div class="col-sm-4">
                                     <select name="sumber_air" class="form-control" id="">
-                                        <option value="1">Kemasan</option>
-                                        <option value="2">PDAM</option>
-                                        <option value="3">Sumur</option>
-                                        <option value="4">Sungai/mata air/gunung</option>
+                                        <option value="1" @if($data_angket["sumber_air"] == 1) selected @endif>Kemasan</option>
+                                        <option value="2" @if($data_angket["sumber_air"] == 2) selected @endif>PDAM</option>
+                                        <option value="3" @if($data_angket["sumber_air"] == 3) selected @endif>Sumur</option>
+                                        <option value="4" @if($data_angket["sumber_air"] == 4) selected @endif>Sungai/mata air/gunung</option>
                                     </select>
                                 </div>
                             </div>
@@ -346,9 +346,9 @@
                                     <label for="" class="col-sm-2 col-form-label">MCK</label>
                                     <div class="col-sm-4">
                                         <select name="mck" class="form-control" id="">
-                                            <option value="1">Kepemilikan sendiri di dalam</option>
-                                            <option value="2">Kepemilikan sendiri di luar</option>
-                                            <option value="3">Berbagi pakai</option>
+                                            <option value="1" @if($data_angket["mck"] == 1) selected @endif>Kepemilikan sendiri di dalam</option>
+                                            <option value="2" @if($data_angket["mck"] == 2) selected @endif>Kepemilikan sendiri di luar</option>
+                                            <option value="3" @if($data_angket["mck"] == 3) selected @endif>Berbagi pakai</option>
                                         </select>
                                     </div>
                                 </div>
@@ -362,29 +362,39 @@
                     <div class="card-body">
                             <div class="form-group row">
                                 <label for="" class="col-sm-2 col-form-label">Mobil (Jenis/Tahun)</label>
-                                <input type="hidden" name="mobil">
+                                <input type="hidden" name="mobil" @if(sizeof($data_angket['mobil']) == 0) value="" @else value="{{ str_replace(array("[", "]"), "", json_encode($data_angket['mobil'])) }}" @endif>
                                 
                                 <div class="col-sm-10">
                                     <ul class="list-unstyled list-inline" id="list_mobil">
-                                        {{-- <li class="list-inline-item">
-                                                <a href="#" class="badge badge-warning" data-toggle="modal" data-target="#editMobil"> 
-                                                        <h6>Honda Jazz (2010)</h6>
-                                                </a>
-                                        </li>
-                                        <li class="list-inline-item">
-                                                <a href="#" class="badge badge-warning"  data-toggle="modal" data-target="#editMobil">
-                                                       <h6>Honda Jazz (2010)</h6> 
-                                                </a>
-                                        </li>  --}}
+                                            @foreach($data_angket['mobil'] as $mobil)
+                                            
+                                            @component('component.kendaraan')
+                                                
+                                                @slot('merk') {{ $mobil->merk }} @endslot
+                                                @slot('modal') #editMobil @endslot
+                                                @slot('tahun') {{ $mobil->tahun }} @endslot
+                                            @endcomponent
+
+                                            @endforeach
                                     </ul>
                                     <a href="#" class="btn btn-info" data-toggle="modal" data-target="#tambahMobil">Tambah</a>
                                 </div>
                             </div>
                             <div class="form-group row">
                                     <label for="" class="col-sm-2 col-form-label">Sepeda Motor (Jenis/Tahun)</label>
-                                    <input type="hidden" name="motor">
+                                    <input type="hidden" name="motor" @if(sizeof($data_angket['motor']) == 0) value="" @else value="{{ str_replace(array("[", "]"), "", json_encode($data_angket['motor'])) }}" @endif>
                                     <div class="col-sm-10">
                                         <ul class="list-unstyled list-inline" id="list_motor">
+
+                                            @foreach($data_angket['motor'] as $motor)
+                                            
+                                                @component('component.kendaraan')
+                                                    @slot('merk') {{ $motor->merk }} @endslot
+                                                    @slot('tahun') {{ $motor->tahun }} @endslot
+                                                    @slot('modal') #editMotor @endslot
+                                                @endcomponent
+
+                                            @endforeach
                                                 {{-- <li class="list-inline-item">
                                                         <a href="#" class="badge badge-warning" data-toggle="modal" data-target="#editMotor"> 
                                                                 <h6>Honda Jazz (2010)</h6>
@@ -461,7 +471,7 @@
 <script>
         $(document).ready(function(){
 
-            // 
+            var jumlah_kendaraan = 0;
             $("input[value='hp']").click(function(){
                 if($("input[value='hp']").prop("checked") == true){
                     $('#totalHp').modal();
@@ -494,10 +504,30 @@
                         return this.value + ',' + JSON.stringify(motor)
                     }
                 });
-                addKendaraan("#list_motor", merk, tahun);
+                addKendaraan("#list_motor", merk, tahun, "editMotor");
                 $("input[name='merk_motor']").val('');
                 $("input[name='tahun_motor']").val('');
                 $("#tambahMotor").modal("toggle");
+            });
+
+            $("#edit_motor").click(function(){
+                var merk = $("input[name='edit_merk_motor']").val();
+                var tahun = $("input[name='edit_tahun_motor']").val();
+                var motor = {"merk":merk, "tahun":tahun};
+                var id = $("input[name='id_motor']").val();
+
+                $("input[name='motor']").val(function(){
+                    if(this.value == ''){
+                        return JSON.stringify(motor);
+                    }
+                    else{
+                        return this.value + ',' + JSON.stringify(motor)
+                    }
+                });
+                editKendaraan(id, merk, tahun, "editMotor");
+                $("input[name='merk_motor']").val('');
+                $("input[name='tahun_motor']").val('');
+                $("#editMotor").modal("toggle");
             });
 
             $("#tambah_mobil").click(function(){
@@ -513,15 +543,53 @@
                         return this.value + ',' + JSON.stringify(mobil)
                     }
                 });
-                addKendaraan("#list_mobil", merk, tahun);
+                addKendaraan("#list_mobil", merk, tahun, "editMobil");
                 $("input[name='merk_mobil']").val('');
                 $("input[name='tahun_mobil']").val('');
                 $("#tambahMobil").modal("toggle");
             });
 
-        function addKendaraan(id, merk, tahun){
-            $(id).append("<li class='list-inline-item'><a href='#' class='badge badge-warning' data-toggle='modal' data-target='#editMobil' data-merk='"+merk+"' data-tahun='"+tahun+"'><h6>"+merk+" ("+tahun+")</h6></a></li>");
+            $("#edit_mobil").click(function(){
+                var merk = $("input[name='edit_merk_mobil']").val();
+                var tahun = $("input[name='edit_tahun_mobil']").val();
+                var mobil = {"merk":merk, "tahun":tahun};
+                var id = $("input[name='id_mobil']").val();
+
+                $("input[name='mobil']").val(function(){
+                    if(this.value == ''){
+                        return JSON.stringify(mobil);
+                    }
+                    else{
+                        return this.value + ',' + JSON.stringify(mobil)
+                    }
+                });
+                editKendaraan(id, merk, tahun, "editMobil");
+                $("input[name='merk_mobil']").val('');
+                $("input[name='tahun_mobil']").val('');
+                $("#editMobil").modal("toggle");
+            });
+
+        function addKendaraan(id, merk, tahun, modal_target){
+            jumlah_kendaraan++;
+            $(id).append("<li class='list-inline-item'><a href='#' class='badge badge-warning' id='"+modal_target+Math.floor(Math.random() * 1000)+"' data-toggle='modal' data-target='#"+modal_target+"' data-merk='"+merk+"' data-tahun='"+tahun+"'><h6>"+merk+" ("+tahun+")</h6></a></li>");
         }
+
+        function editKendaraan(id, merk, tahun, modal_target){
+            id = id.replace("#", "");
+            $("#"+id).replaceWith("<a href='#' class='badge badge-warning' id='"+id+"' data-toggle='modal' data-target='#"+modal_target+"' data-merk='"+merk+"' data-tahun='"+tahun+"'><h6>"+merk+" ("+tahun+")</h6></a>");
+        }
+
+            $("#editMotor").on("show.bs.modal", function(event){
+                var button = $(event.relatedTarget);
+                
+                var merk = button.data("merk");
+                var tahun = button.data("tahun");
+                var id = button.prop("id");
+
+                $("input[name='edit_merk_motor']").val(merk);
+                $("input[name='edit_tahun_motor']").val(tahun);
+                $("input[name='id_motor']").val(id);
+            });
         });
 
     </script>
@@ -569,6 +637,7 @@
                     </div>
                     <div class="modal-body">
                         <form class="form-inline">
+                            <input type="hidden" name="id_motor">
                             <div class="form-group mx-sm-3 mb-2">
                                 <label for="staticEmail2" class="sr-only">Merk</label>
                                 <input type="text"  class="form-control" id="" value="" placeholder="Merk" name="edit_merk_motor">
@@ -600,6 +669,7 @@
                 </div>
                 <div class="modal-body">
                     <form class="form-inline">
+                            <input type="hidden" name="id_mobil">
                         <div class="form-group mx-sm-3 mb-2">
                             <label for="staticEmail2" class="sr-only">Merk</label>
                             <input type="text"  class="form-control" id="" value="" placeholder="Merk" name="edit_merk_mobil">
@@ -662,7 +732,7 @@
                             <form class="form">
                                 <div class="form-group col-sm-12">
                                     <label for="staticEmail2" class="sr-only">Jumlah</label>
-                                    <input type="number"  class="form-control" id="" value="" min=1 placeholder="Jumlah" name="total_hp">
+                                    <input type="number"  class="form-control" id="" value="1" min=1 placeholder="Jumlah" name="total_hp">
                                 </div>
                                 
                             </form>
