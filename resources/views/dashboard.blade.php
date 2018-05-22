@@ -21,8 +21,8 @@
                                                     Nama
                                                 </th>
                                                 <th>
-                                                    Kota
-                                                </th>
+                                                    Alamat
+                                                </th width="60%">
                                                 <th>
                                                     Sekolah Asal
                                                 </th>
@@ -33,49 +33,22 @@
                                     
                                 </thead>
                                 <tbody>
+                                    @foreach($calon_penerima as $calon_penerima)
                                     <tr>
                                         <td>
-                                            MELENIA AYU SAPUTRI
+                                            {{$calon_penerima->nama}}
                                         </td>
                                         <td>
-                                            Tulungagung
+                                            {{$calon_penerima->alamat}}
                                         </td>
                                         <td>
-                                            MAN 2 Tulungagung
+                                            {{$calon_penerima->sekolah_asal}}
                                         </td>
                                         <td class="text-right">
-                                            <a href="{{ url("/angket/1") }}"><i class="now-ui-icons files_single-copy-04"></i></a>
+                                            <a href="{{ url("/angket/".$calon_penerima->id) }}"><i class="now-ui-icons files_single-copy-04"></i></a>
                                         </td>
                                     </tr>
-                                    <tr>
-                                        <td>
-                                            SAHRUL ANWAR
-                                        </td>
-                                        <td>
-                                            Semarang
-                                        </td>
-                                        <td>
-                                            SMAN 2 Semarang
-                                        </td>
-                                        <td class="text-right">
-                                            <a href="{{ url("/angket/2") }}"><i class="now-ui-icons files_single-copy-04"></i></a>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                            <td>
-                                                HERU PRASETYA
-                                            </td>
-                                            <td>
-                                                Kediri
-                                            </td>
-                                            <td>
-                                                SMKN 1 Kediri
-                                            </td>
-                                            <td class="text-right">
-                                                <a href="{{ url("/angket/3") }}"><i class="now-ui-icons files_single-copy-04"></i></a>
-                                            </td>
-                                        </tr>
-                                   
+                                    @endforeach
                                 </tbody>
                             </table>
                         </div>

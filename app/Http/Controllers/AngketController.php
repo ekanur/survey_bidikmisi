@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Angket;
+use App\Calon_penerima;
+use Illuminate\Support\Facades\DB;
 
 class AngketController extends Controller
 {
@@ -12,8 +14,10 @@ class AngketController extends Controller
         $nim_surveyor = 1533430596;
         $angket = Angket::select('id', 'nama_item_kuesioner', 'isi_item_kuesioner')->where([['calon_penerima_id', "=", $calon_penerima_id], ["nim_surveyor", "=", $nim_surveyor], ['keterangan', '=', null]])->get();
 
+        $detail_calon_penerima = $this->getDetailCalonPenerima($calon_penerima_id, $nim_surveyor);
+       
         if (sizeof($angket) == 0) {
-            return view("angket", compact("calon_penerima_id"));
+            return view("angket", compact("calon_penerima_id", 'detail_calon_penerima'));
         }
 
         foreach ($angket as $angket_data) {
@@ -30,10 +34,10 @@ class AngketController extends Controller
             // echo "<pre>";var_dump($angket[key($angket[$i]['item_kuesioner'])]); echo $i;
             // $angket[key($angket[$i]['item_kuesioner'])] = "hello";
         }
-        // exit();
-        //dd($data_angket);
+        
+        // dd($detail_calon_penerima);
 
-        return view("angket_terisi", compact('data_angket', 'calon_penerima_id'));
+        return view("angket_terisi", compact('data_angket', 'calon_penerima_id', 'detail_calon_penerima'));
     }
 
     public function simpan(Request $request)
@@ -113,5 +117,74 @@ class AngketController extends Controller
         $data['catatan'] = array("catatan" => $request->catatan);
 
         return $data;
+    }
+
+    function getDetailCalonPenerima($id, $nim_surveyor){
+        $calon_penerima = Calon_penerima::select("no_pendaftaran")->where([["id", "=", $id],["nim_surveyor", "=", $nim_surveyor]])->first();
+
+        $query = 'SELECT b.id_peserta_didik,u.jjg_kd,b.cmhs_nm,"c".jalur_nm,
+        b.cmhs_jenis_kelamin,
+        d.kota_nm AS k1,
+        b.cmhs_tgllhr,
+        f.agm_nm,
+        b.cmhs_alamat,
+        b.cmhs_rt,
+        b.cmhs_rw,
+        b.cmhs_kelurahan,
+        b.cmhs_kecamatan,
+        "g".kota_nm AS k2,
+        h.prop_nm AS prop_nm_asal,
+        b.cmhs_kodepos,
+        b.cmhs_hp,
+        b.cmhs_tlp,
+        b.cmhs_email,
+        b.cmhs_nm_ayah,
+        b.cmhs_nm_ibu,
+        b.cmhs_jml_kakak,
+        b.cmhs_jml_adik,
+        "k".penddk_nm AS pa,
+        l.penddk_nm AS pi,
+        "m".pek_nm AS pka,
+        n.pek_nm AS pki,
+        o.hasil_nm AS ha,
+        "p".hasil_nm AS hi,
+        q.slta,
+        r.kota_nm AS ks,
+        s.prop_nm,
+        "t".jur_smu_nm,
+        "a".cmhs_nodft,
+        u.pro_nm,
+        b.hasil_ayah,
+        b.hasil_ibu,
+        b.hasil_wali,
+        b.pek_kd_wali,
+        b.pend_kd_wali,
+        "a".cmhs_nim
+        FROM
+        dtum.m_cmhs AS "a"
+        LEFT JOIN dtum.m_peserta_didik AS b ON "a".id_peserta_didik = b.id_peserta_didik
+        LEFT JOIN dtum.m_jalur AS "c" ON "a".jalur_kd = "c".jalur_kd
+        LEFT JOIN dtum.m_kab AS d ON d.kota_kd = b.cmhs_kotalhr
+        LEFT JOIN dtum.m_kewarganegaraan AS e ON e.id_kewarganegaraan = b.cmhs_kewarganegaraan
+        LEFT JOIN dtum.m_agm AS f ON f.agm_kd = b.cmhs_agama
+        LEFT JOIN dtum.m_kab AS "g" ON "g".kota_kd = b.cmhs_kodekota
+        LEFT JOIN dtum.m_prop AS h ON h.prop_kd = b.cmhs_prop_asal
+        LEFT JOIN dtum.m_pendidikan AS "k" ON "k".penddk_kd = b.pend_kd_ayah
+        LEFT JOIN dtum.m_pendidikan AS l ON l.penddk_kd = b.pend_kd_ibu
+        LEFT JOIN dtum.m_pekerjaan AS "m" ON "m".pek_kd = b.pek_kd_ayah
+        LEFT JOIN dtum.m_pekerjaan AS n ON n.pek_kd = b.pek_kd_ibu
+        LEFT JOIN dtum.m_penghasilan AS o ON o.hasil_kd = b.hasil_kd
+        LEFT JOIN dtum.m_penghasilan AS "p" ON "p".hasil_kd = b.hasil_kd_ibu
+        LEFT JOIN dtum.m_slta_import AS q ON q.kode = b.cmhs_kodeslta
+        LEFT JOIN dtum.m_kab AS r ON r.kota_kd = b.kota_sma
+        LEFT JOIN dtum.m_propinsi AS s ON s.prop_kd = b.prop_sma
+        LEFT JOIN dtum.m_jur_smu AS "t" ON "t".jur_smu_kd = b.cmhs_jurslta
+        LEFT JOIN dtum.m_prodi AS u ON u.pro_kd = "a".pro_kd
+        WHERE
+        "a".cmhs_nodft = ?
+        ';
+        $detail_calon_penerima = DB::connection("pgsql2")->select($query, [$calon_penerima->no_pendaftaran]);
+
+        return $detail_calon_penerima;
     }
 }

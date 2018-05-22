@@ -41,54 +41,52 @@
                         <h5 class="title">Profil</h5>
                     </div>
                     <div class="card-body">
-                        <form>
-                            <div class="form-group row">
-                                <label for="" class="col-sm-2 col-form-label">No. Peserta/NIM</label>
-                                <div class="col-sm-10">
-                                    <span>418053454/1803483949</span>
-                                </div>
+                        <div class="form-group row">
+                            <label for="" class="col-sm-2 col-form-label">No. Peserta/NIM</label>
+                            <div class="col-sm-10">
+                                <span>{{$detail_calon_penerima[0]->cmhs_nodft}}/{{$detail_calon_penerima[0]->cmhs_nim}}</span>
                             </div>
-                            <div class="form-group row">
-                                <label for="" class="col-sm-2 col-form-label">Nama Siswa</label>
-                                <div class="col-sm-10">
-                                    <span>MELENIA AYU SAPUTRI</span>
-                                </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="" class="col-sm-2 col-form-label">Nama Siswa</label>
+                            <div class="col-sm-10">
+                                <span>{{$detail_calon_penerima[0]->cmhs_nm}}</span>
                             </div>
-                            <div class="form-group row">
-                                <label for="" class="col-sm-2 col-form-label">Program Studi</label>
-                                <div class="col-sm-10">
-                                    <span>S1 BIMBINGAN DAN KONSELING</span>
-                                </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="" class="col-sm-2 col-form-label">Program Studi</label>
+                            <div class="col-sm-10">
+                                <span>{{$detail_calon_penerima[0]->jjg_kd}} {{strtoupper($detail_calon_penerima[0]->pro_nm)}}</span>
                             </div>
-                            <div class="form-group row">
-                                <label for="" class="col-sm-2 col-form-label">Alamat Rumah</label>
-                                <div class="col-sm-10">
-                                    <!-- <input type="text" disabled class="form-control" id="" value="S1 BIMBINGAN DAN KONSELING"> -->
-                                    <span>RT 002 RW 008 DSN. TANGGUNG DS. TANGGUNG KEC. CAMPURDARAT KABUPATEN TULUNGAGUNG, JATIM</span>
-                                </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="" class="col-sm-2 col-form-label">Alamat Rumah</label>
+                            <div class="col-sm-10">
+                                <!-- <input type="text" disabled class="form-control" id="" value="S1 BIMBINGAN DAN KONSELING"> -->
+                                <span>{{strtoupper($detail_calon_penerima[0]->cmhs_alamat." RT ".$detail_calon_penerima[0]->cmhs_rt." RW ".$detail_calon_penerima[0]->cmhs_rw." ".$detail_calon_penerima[0]->cmhs_kelurahan." ".$detail_calon_penerima[0]->cmhs_kecamatan." ".$detail_calon_penerima[0]->k2)}}</span>
                             </div>
-                            <div class="form-group row">
-                                <label for="" class="col-sm-2 col-form-label">Sekolah</label>
-                                <div class="col-sm-10">
-                                    <span>MAN 2 TULUNGAGUNG</span>
-                                    <!-- <textarea name="" id="" cols="30" rows="10" class="form-control">RT 002 RW 008 DSN. TANGGUNG DS. TANGGUNG KEC. CAMPURDARAT KABUPATEN TULUNGAGUNG, JATIM</textarea> -->
-                                </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="" class="col-sm-2 col-form-label">Sekolah</label>
+                            <div class="col-sm-10">
+                                <span>{{strtoupper($detail_calon_penerima[0]->slta)}}</span>
+                                <!-- <textarea name="" id="" cols="30" rows="10" class="form-control">RT 002 RW 008 DSN. TANGGUNG DS. TANGGUNG KEC. CAMPURDARAT KABUPATEN TULUNGAGUNG, JATIM</textarea> -->
                             </div>
-                            <div class="form-group row">
-                                <label for="" class="col-sm-2 col-form-label">Alamat Sekolah</label>
-                                <div class="col-sm-10">
-                                    <span>MAN 2 TULUNGAGUNG</span>
-                                    <!-- <textarea name="" id="" cols="30" rows="10" class="form-control">RT 002 RW 008 DSN. TANGGUNG DS. TANGGUNG KEC. CAMPURDARAT KABUPATEN TULUNGAGUNG, JATIM</textarea> -->
-                                </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="" class="col-sm-2 col-form-label">Alamat Sekolah</label>
+                            <div class="col-sm-10">
+                                <span>{{strtoupper($detail_calon_penerima[0]->ks)}} {{strtoupper($detail_calon_penerima[0]->prop_nm)}}</span>
+                                <!-- <textarea name="" id="" cols="30" rows="10" class="form-control">RT 002 RW 008 DSN. TANGGUNG DS. TANGGUNG KEC. CAMPURDARAT KABUPATEN TULUNGAGUNG, JATIM</textarea> -->
                             </div>
-                            <div class="form-group row">
-                                <label for="" class="col-sm-2 col-form-label">Telp</label>
-                                <div class="col-sm-10">
-                                    <span>085542333463</span>
-                                    <!-- <textarea name="" id="" cols="30" rows="10" class="form-control">RT 002 RW 008 DSN. TANGGUNG DS. TANGGUNG KEC. CAMPURDARAT KABUPATEN TULUNGAGUNG, JATIM</textarea> -->
-                                </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="" class="col-sm-2 col-form-label">Telp</label>
+                            <div class="col-sm-10">
+                                <span>{{strtoupper($detail_calon_penerima[0]->cmhs_hp)}}</span>
+                                <!-- <textarea name="" id="" cols="30" rows="10" class="form-control">RT 002 RW 008 DSN. TANGGUNG DS. TANGGUNG KEC. CAMPURDARAT KABUPATEN TULUNGAGUNG, JATIM</textarea> -->
                             </div>
-                        </form>
+                        </div>
                     </div>
                 </div>
                 <div class="card">
@@ -103,7 +101,7 @@
                             <div class="form-group row">
                                 <label for="" class="col-sm-2 col-form-label">Nama Ayah/Wali</label>
                                 <div class="col-sm-5">
-                                    <span>SAMSU</span>
+                                    <span>{{strtoupper($detail_calon_penerima[0]->cmhs_nm_ayah)}}</span>
                                 </div>
                                 <div class="col-sm-2">
                                     <select name="ayah" id="" class="form-control" onchange="changed(this)">
@@ -121,7 +119,7 @@
                             <div class="form-group row">
                                 <label for="" class="col-sm-2 col-form-label">Nama Ibu</label>
                                 <div class="col-sm-5">
-                                    <span>SITI ROBIYAH</span>
+                                    <span>{{strtoupper($detail_calon_penerima[0]->cmhs_nm_ibu)}}</span>
                                 </div>
                                 <div class="col-sm-2">
                                     <select name="ibu" id="" class="form-control" onchange="changed(this)">
@@ -139,7 +137,7 @@
                             <div class="form-group row">
                                 <label for="" class="col-sm-2 col-form-label">Pekerjaan Ayah</label>
                                 <div class="col-sm-5">
-                                    <span>Buruh (Tani, Pabrik)</span>
+                                    <span>{{strtoupper($detail_calon_penerima[0]->pka)}}</span>
                                 </div>
                                 <div class="col-sm-2">
                                     <select name="kerja_ayah" id="" class="form-control" onchange="changed(this)">
@@ -160,7 +158,7 @@
                             <div class="form-group row">
                                 <label for="" class="col-sm-2 col-form-label">Pekerjaan Ibu</label>
                                 <div class="col-sm-5">
-                                    <span>Tidak Bekerja</span>
+                                    <span>{{strtoupper($detail_calon_penerima[0]->pki)}}</span>
                                 </div>
                                 <div class="col-sm-2">
                                     <select name="kerja_ibu" id="" class="form-control" onchange="changed(this)">
@@ -181,7 +179,7 @@
                             <div class="form-group row">
                                 <label for="" class="col-sm-2 col-form-label">Pendidikan Ayah/Ibu</label>
                                 <div class="col-sm-5">
-                                    <span>Lulus SD/Lulus SD</span>
+                                    <span>{{strtoupper($detail_calon_penerima[0]->pa)}}/{{strtoupper($detail_calon_penerima[0]->pi)}}</span>
                                 </div>
                                 <div class="col-sm-2">
                                     <select name="pendidikan_ayah_ibu" id="" class="form-control" onchange="changed(this)">
@@ -204,7 +202,7 @@
                             <div class="form-group row">
                                 <label for="" class="col-sm-2 col-form-label">Penghasilan Ayah</label>
                                 <div class="col-sm-2">
-                                    <span>Rp. 850.000</span>
+                                    <span>Rp. {{number_format(intval($detail_calon_penerima[0]->hasil_ayah))}}</span>
                                 </div>
                                 <div class="col-sm-3">
                                     <select name="jenis_penghasilan_ayah" id="" class="form-control" onchange="changed(this)">
@@ -238,7 +236,7 @@
                             <div class="form-group row">
                                 <label for="" class="col-sm-2 col-form-label">Penghasilan Ibu</label>
                                 <div class="col-sm-2">
-                                    <span>0</span>
+                                    <span>Rp. {{number_format(intval($detail_calon_penerima[0]->hasil_ibu))}}</span>
                                 </div>
                                 <div class="col-sm-3">
                                     <select name="jenis_penghasilan_ibu" id="" class="form-control" onchange="changed(this)">
@@ -272,7 +270,7 @@
                             <div class="form-group row">
                                 <label for="" class="col-sm-2 col-form-label">Penghasilan Wali</label>
                                 <div class="col-sm-2">
-                                    <span>0</span>
+                                    <span>Rp. {{number_format(intval($detail_calon_penerima[0]->hasil_wali))}}</span>
                                 </div>
                                 <div class="col-sm-3">
                                     <select name="jenis_penghasilan_wali" id="" class="form-control" onchange="changed(this)">
@@ -481,7 +479,7 @@
                                     </select>
                                 </div>
                             </div>
-
+                        </div>
                         </div>
                         <div class="card">
                             <div class="card-header">

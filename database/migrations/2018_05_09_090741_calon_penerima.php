@@ -15,8 +15,12 @@ class CalonPenerima extends Migration
     {
         Schema::create('calon_penerima', function (Blueprint $table) {
             $table->increments('id');
-            $table->string("no_pendafaran", 35);
+            $table->string("no_pendaftaran", 35);
+            $table->string("nama", 30);
+            $table->string("alamat", 150);
+            $table->string("sekolah_asal", 60);
             $table->string("nim_surveyor", 15);
+            
             $table->timestamps();
         });
     }
