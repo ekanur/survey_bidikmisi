@@ -311,7 +311,7 @@
                                         <label class="form-check-label">
                                             <input class="form-check-input" type="checkbox" name="komunikasi[]"
                                                    value="telepon_rumah"
-                                                   @if(in_array("telepon_rumah", $data_angket["alat_komunikasi"]->value)) checked @endif
+                                                   @if($data_angket["alat_komunikasi"]->value>0) @if(in_array("telepon_rumah", $data_angket["alat_komunikasi"]->value)) checked @endif @endif
                                                    onchange="changed(this)">
                                             <span class="form-check-sign">Telepon Rumah</span>
                                         </label>
@@ -331,7 +331,7 @@
                                         <label class="form-check-label">
                                             <input class="form-check-input" type="checkbox" name="komunikasi[]"
                                                    value="internet"
-                                                   @if(in_array("internet", $data_angket["alat_komunikasi"]->value)) checked @endif
+                                                   @if($data_angket["alat_komunikasi"]->value>0) @if(in_array("internet", $data_angket["alat_komunikasi"]->value)) checked @endif @endif
                                                    onchange="changed(this)">
                                             <span class="form-check-sign">Internet rumah/TV Cable</span>
                                         </label>
@@ -682,7 +682,9 @@
                 const merk = inputMerkMotor.val();
                 const tahun = inputTahunMotor.val();
 
+                console.log(dataMotor);
                 dataMotor.push({merk: merk,tahun: tahun});
+                console.log(dataMotor);
                 update();
 
                 inputMerkMotor.val('');
@@ -696,7 +698,7 @@
                 const tahun = $("input[name='edit_tahun_motor']").val();
                 const id = $("input[name='id_motor']").val().replace('editMotor', '');
 
-                dataMotor[id]  = {merk: merk,tahun: tahun};
+                dataMotor[id] = {merk: merk,tahun: tahun};
                 update();
 
                 inputMerkMotor.val('');
