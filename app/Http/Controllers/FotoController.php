@@ -13,9 +13,9 @@ class FotoController extends Controller
         // dd(sizeof($angket));
         
         $path_foto = array(
-            "bersama" => ($angket == null)? "" : json_decode($angket->item_kuesioner)->foto->bersama,
-            "dapur" => ($angket == null)? "" : json_decode($angket->item_kuesioner)->foto->dapur,
-            "kamar_mandi" => ($angket == null)? "" : json_decode($angket->item_kuesioner)->foto->kamar_mandi,
+            "bersama" => ($angket == null)? "" : json_decode($angket->isi_item_kuesioner)->foto->bersama,
+            "dapur" => ($angket == null)? "" : json_decode($angket->isi_item_kuesioner)->foto->dapur,
+            "kamar_mandi" => ($angket == null)? "" : json_decode($angket->isi_item_kuesioner)->foto->kamar_mandi,
         );
 
         
@@ -43,7 +43,7 @@ class FotoController extends Controller
 
         $nim_surveyor = 1533430596;
 
-        $angket = Angket::updateOrCreate(["calon_penerima_id" => $request->calon_penerima_id, "keterangan"=> "is_photo", "nim_surveyor"=>$nim_surveyor], ["item_kuesioner"=>json_encode($foto), "calon_penerima_id"=>$request->calon_penerima_id, "keterangan"=>'is_photo', 'nim_surveyor' => $nim_surveyor]);
+        $angket = Angket::updateOrCreate(["calon_penerima_id" => $request->calon_penerima_id, "keterangan"=> "is_photo", "nim_surveyor"=>$nim_surveyor], ["isi_item_kuesioner"=>json_encode($foto),"nama_item_kuesioner"=>"photo", "calon_penerima_id"=>$request->calon_penerima_id, "keterangan"=>'is_photo', 'nim_surveyor' => $nim_surveyor]);
 
         return redirect()->back();
     }
