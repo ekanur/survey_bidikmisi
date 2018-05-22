@@ -710,7 +710,7 @@
                 const tahun = $("input[name='edit_tahun_motor']").val();
                 const id = $("input[name='id_motor']").val().replace('editMotor', '');
 
-                dataMotor.slice(id, 1);
+                dataMotor.splice(id, 1);
                 update();
 
                 inputMerkMotor.val('');
