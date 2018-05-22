@@ -41,59 +41,57 @@
                         <h5 class="title">Profil</h5>
                     </div>
                     <div class="card-body">
-                        <form>
-                            <div class="form-group row">
-                                <label for="" class="col-sm-2 col-form-label">No. Peserta/NIM</label>
-                                <div class="col-sm-10">
-                                    <span>418053454/1803483949</span>
-                                </div>
+                        <div class="form-group row">
+                            <label for="" class="col-sm-2 col-form-label">No. Peserta/NIM</label>
+                            <div class="col-sm-10">
+                                <span>418053454/1803483949</span>
                             </div>
-                            <div class="form-group row">
-                                <label for="" class="col-sm-2 col-form-label">Nama Siswa</label>
-                                <div class="col-sm-10">
-                                    <span>MELENIA AYU SAPUTRI</span>
-                                </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="" class="col-sm-2 col-form-label">Nama Siswa</label>
+                            <div class="col-sm-10">
+                                <span>MELENIA AYU SAPUTRI</span>
                             </div>
-                            <div class="form-group row">
-                                <label for="" class="col-sm-2 col-form-label">Program Studi</label>
-                                <div class="col-sm-10">
-                                    <span>S1 BIMBINGAN DAN KONSELING</span>
-                                </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="" class="col-sm-2 col-form-label">Program Studi</label>
+                            <div class="col-sm-10">
+                                <span>S1 BIMBINGAN DAN KONSELING</span>
                             </div>
-                            <div class="form-group row">
-                                <label for="" class="col-sm-2 col-form-label">Alamat Rumah</label>
-                                <div class="col-sm-10">
-                                    <!-- <input type="text" disabled class="form-control" id="" value="S1 BIMBINGAN DAN KONSELING"> -->
-                                    <span>RT 002 RW 008 DSN. TANGGUNG DS. TANGGUNG KEC. CAMPURDARAT KABUPATEN TULUNGAGUNG, JATIM</span>
-                                </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="" class="col-sm-2 col-form-label">Alamat Rumah</label>
+                            <div class="col-sm-10">
+                                <!-- <input type="text" disabled class="form-control" id="" value="S1 BIMBINGAN DAN KONSELING"> -->
+                                <span>RT 002 RW 008 DSN. TANGGUNG DS. TANGGUNG KEC. CAMPURDARAT KABUPATEN TULUNGAGUNG, JATIM</span>
                             </div>
-                            <div class="form-group row">
-                                <label for="" class="col-sm-2 col-form-label">Sekolah</label>
-                                <div class="col-sm-10">
-                                    <span>MAN 2 TULUNGAGUNG</span>
-                                    <!-- <textarea name="" id="" cols="30" rows="10" class="form-control">RT 002 RW 008 DSN. TANGGUNG DS. TANGGUNG KEC. CAMPURDARAT KABUPATEN TULUNGAGUNG, JATIM</textarea> -->
-                                </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="" class="col-sm-2 col-form-label">Sekolah</label>
+                            <div class="col-sm-10">
+                                <span>MAN 2 TULUNGAGUNG</span>
+                                <!-- <textarea name="" id="" cols="30" rows="10" class="form-control">RT 002 RW 008 DSN. TANGGUNG DS. TANGGUNG KEC. CAMPURDARAT KABUPATEN TULUNGAGUNG, JATIM</textarea> -->
                             </div>
-                            <div class="form-group row">
-                                <label for="" class="col-sm-2 col-form-label">Alamat Sekolah</label>
-                                <div class="col-sm-10">
-                                    <span>MAN 2 TULUNGAGUNG</span>
-                                    <!-- <textarea name="" id="" cols="30" rows="10" class="form-control">RT 002 RW 008 DSN. TANGGUNG DS. TANGGUNG KEC. CAMPURDARAT KABUPATEN TULUNGAGUNG, JATIM</textarea> -->
-                                </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="" class="col-sm-2 col-form-label">Alamat Sekolah</label>
+                            <div class="col-sm-10">
+                                <span>MAN 2 TULUNGAGUNG</span>
+                                <!-- <textarea name="" id="" cols="30" rows="10" class="form-control">RT 002 RW 008 DSN. TANGGUNG DS. TANGGUNG KEC. CAMPURDARAT KABUPATEN TULUNGAGUNG, JATIM</textarea> -->
                             </div>
-                            <div class="form-group row">
-                                <label for="" class="col-sm-2 col-form-label">Telp</label>
-                                <div class="col-sm-10">
-                                    <span>085542333463</span>
-                                    <!-- <textarea name="" id="" cols="30" rows="10" class="form-control">RT 002 RW 008 DSN. TANGGUNG DS. TANGGUNG KEC. CAMPURDARAT KABUPATEN TULUNGAGUNG, JATIM</textarea> -->
-                                </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="" class="col-sm-2 col-form-label">Telp</label>
+                            <div class="col-sm-10">
+                                <span>085542333463</span>
+                                <!-- <textarea name="" id="" cols="30" rows="10" class="form-control">RT 002 RW 008 DSN. TANGGUNG DS. TANGGUNG KEC. CAMPURDARAT KABUPATEN TULUNGAGUNG, JATIM</textarea> -->
                             </div>
-                        </form>
+                        </div>
                     </div>
                 </div>
-                <div class="card">
-                    <div action="{{ url('/angket/save') }}" method="post">
-                        {{ csrf_field() }}
+                <form action="{{ url('/angket/save') }}" method="post">
+                    {{ csrf_field() }}
+                    <div class="card">
                         <input type="hidden" name="calon_penerima_id" value="{{ $calon_penerima_id }}">
                         <div class="card-header">
                             <h5 class="title">Orang Tua & Kondisi Rumah</h5>
@@ -273,7 +271,6 @@
                                     </div>
 
                                 </div>
-
                             </div>
                             <div class="form-group row">
                                 <label for="" class="col-sm-2 col-form-label">Jumlah penghuni rumah</label>
@@ -370,111 +367,108 @@
                                     </select>
                                 </div>
                             </div>
-
                         </div>
                     </div>
-                </div>
-                <div class="card">
-                    <div class="card-header">
-                        <h5 class="title">Barang/usaha yang dimiliki di rumah</h5>
-                    </div>
-                    <div class="card-body">
-                        <div class="form-group row">
-                            <label for="" class="col-sm-2 col-form-label">Mobil (Jenis/Tahun)</label>
-                            <input type="hidden" name="mobil">
+                    <div class="card">
+                        <div class="card-header">
+                            <h5 class="title">Barang/usaha yang dimiliki di rumah</h5>
+                        </div>
+                        <div class="card-body">
+                            <div class="form-group row">
+                                <label for="" class="col-sm-2 col-form-label">Mobil (Jenis/Tahun)</label>
+                                <input type="hidden" name="mobil">
 
-                            <div class="col-sm-10">
-                                <ul class="list-unstyled list-inline" id="list_mobil">
-                                    {{-- <li class="list-inline-item">
-                                            <a href="#" class="badge badge-warning" data-toggle="modal" data-target="#editMobil">
-                                                    <h6>Honda Jazz (2010)</h6>
-                                            </a>
-                                    </li>
-                                    <li class="list-inline-item">
-                                            <a href="#" class="badge badge-warning"  data-toggle="modal" data-target="#editMobil">
-                                                   <h6>Honda Jazz (2010)</h6>
-                                            </a>
-                                    </li>  --}}
-                                </ul>
-                                <a href="#" class="btn btn-info" data-toggle="modal"
-                                   data-target="#tambahMobil">Tambah</a>
+                                <div class="col-sm-10">
+                                    <ul class="list-unstyled list-inline" id="list_mobil">
+                                        {{-- <li class="list-inline-item">
+                                                <a href="#" class="badge badge-warning" data-toggle="modal" data-target="#editMobil">
+                                                        <h6>Honda Jazz (2010)</h6>
+                                                </a>
+                                        </li>
+                                        <li class="list-inline-item">
+                                                <a href="#" class="badge badge-warning"  data-toggle="modal" data-target="#editMobil">
+                                                       <h6>Honda Jazz (2010)</h6>
+                                                </a>
+                                        </li>  --}}
+                                    </ul>
+                                    <a href="#" class="btn btn-info" data-toggle="modal"
+                                       data-target="#tambahMobil">Tambah</a>
+                                </div>
                             </div>
-                        </div>
-                        <div class="form-group row">
-                            <label for="" class="col-sm-2 col-form-label">Sepeda Motor (Jenis/Tahun)</label>
-                            <input type="hidden" name="motor">
-                            <div class="col-sm-10">
-                                <ul class="list-unstyled list-inline" id="list_motor">
-                                    {{-- <li class="list-inline-item">
-                                            <a href="#" class="badge badge-warning" data-toggle="modal" data-target="#editMotor">
-                                                    <h6>Honda Jazz (2010)</h6>
-                                            </a>
-                                    </li>
-                                    <li class="list-inline-item">
-                                            <a href="#" class="badge badge-warning"  data-toggle="modal" data-target="#editMotor">
-                                                    <h6>Honda Jazz (2010)</h6>
-                                            </a>
-                                    </li>  --}}
-                                </ul>
-                                <a href="#" class="btn btn-info" data-toggle="modal"
-                                   data-target="#tambahMotor">Tambah</a>
+                            <div class="form-group row">
+                                <label for="" class="col-sm-2 col-form-label">Sepeda Motor (Jenis/Tahun)</label>
+                                <input type="hidden" name="motor">
+                                <div class="col-sm-10">
+                                    <ul class="list-unstyled list-inline" id="list_motor">
+                                        {{-- <li class="list-inline-item">
+                                                <a href="#" class="badge badge-warning" data-toggle="modal" data-target="#editMotor">
+                                                        <h6>Honda Jazz (2010)</h6>
+                                                </a>
+                                        </li>
+                                        <li class="list-inline-item">
+                                                <a href="#" class="badge badge-warning"  data-toggle="modal" data-target="#editMotor">
+                                                        <h6>Honda Jazz (2010)</h6>
+                                                </a>
+                                        </li>  --}}
+                                    </ul>
+                                    <a href="#" class="btn btn-info" data-toggle="modal"
+                                       data-target="#tambahMotor">Tambah</a>
+                                </div>
                             </div>
-                        </div>
-                        <div class="form-group row">
-                            <label for="" class="col-sm-2 col-form-label">Sawah (Luas)</label>
-                            <div class="col-sm-8">
-                                <input type="number" class="form-control" id="" name="luas_sawah">
-                            </div>
-                            <div class="col-sm-2">
-                                <strong>m <sup>2</sup></strong>
-                            </div>
-                        </div>
-                        <div class="form-group row">
-                            <label for="" class="col-sm-2 col-form-label">Ternak (Jenis/Jumlah)</label>
-                            <div class="col-sm-4">
-                                <input type="text" class="form-control" id="" placeholder="jenis" name="ternak">
-                            </div>
-                            <div class="col-sm-4">
-                                <input type="number" name="jumlah_ternak" class="form-control" id=""
-                                       placeholder="jumlah">
-                            </div>
-                        </div>
-                        <div class="form-group row">
-                            <label for="" class="col-sm-2 col-form-label">Catatan</label>
-                            <div class="col-sm-8">
-                                <textarea name="catatan" class="form-control" id="" cols="30" rows="10"></textarea>
-                            </div>
-                        </div>
-                        {{-- <div class="form-group row">
-                            <label for="" class="col-sm-2 col-form-label">Pekarangan (Luas)</label>
-                            <div class="col-sm-8">
-                                <input type="number" class="form-control" id="" >
-                                <!-- <textarea name="" id="" cols="30" rows="10" class="form-control">RT 002 RW 008 DSN. TANGGUNG DS. TANGGUNG KEC. CAMPURDARAT KABUPATEN TULUNGAGUNG, JATIM</textarea> -->
-                            </div>
-                            <div class="col-sm-2">
+                            <div class="form-group row">
+                                <label for="" class="col-sm-2 col-form-label">Sawah (Luas)</label>
+                                <div class="col-sm-8">
+                                    <input type="number" class="form-control" id="" name="luas_sawah">
+                                </div>
+                                <div class="col-sm-2">
                                     <strong>m <sup>2</sup></strong>
                                 </div>
-                        </div> --}}
-                        {{-- <div class="form-group row">
-                            <label for="" class="col-sm-2 col-form-label">Usaha</label>
-                            <div class="col-sm-10">
-                                <input type="text"  class="form-control" id="">
-                                <!-- <textarea name="" id="" cols="30" rows="10" class="form-control">RT 002 RW 008 DSN. TANGGUNG DS. TANGGUNG KEC. CAMPURDARAT KABUPATEN TULUNGAGUNG, JATIM</textarea> -->
                             </div>
-                        </div> --}}
-                        <strong class="now-ui-icons business_bulb-63"></strong> &nbsp;<small><em>Sebelum simpan,
-                                pastikan semua data telah terisi sesuai kondisi di lapangan.</em></small>
+                            <div class="form-group row">
+                                <label for="" class="col-sm-2 col-form-label">Ternak (Jenis/Jumlah)</label>
+                                <div class="col-sm-4">
+                                    <input type="text" class="form-control" id="" placeholder="jenis" name="ternak">
+                                </div>
+                                <div class="col-sm-4">
+                                    <input type="number" name="jumlah_ternak" class="form-control" id=""
+                                           placeholder="jumlah">
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="" class="col-sm-2 col-form-label">Catatan</label>
+                                <div class="col-sm-8">
+                                    <textarea name="catatan" class="form-control" id="" cols="30" rows="10"></textarea>
+                                </div>
+                            </div>
+                            {{-- <div class="form-group row">
+                                <label for="" class="col-sm-2 col-form-label">Pekarangan (Luas)</label>
+                                <div class="col-sm-8">
+                                    <input type="number" class="form-control" id="" >
+                                    <!-- <textarea name="" id="" cols="30" rows="10" class="form-control">RT 002 RW 008 DSN. TANGGUNG DS. TANGGUNG KEC. CAMPURDARAT KABUPATEN TULUNGAGUNG, JATIM</textarea> -->
+                                </div>
+                                <div class="col-sm-2">
+                                        <strong>m <sup>2</sup></strong>
+                                    </div>
+                            </div> --}}
+                            {{-- <div class="form-group row">
+                                <label for="" class="col-sm-2 col-form-label">Usaha</label>
+                                <div class="col-sm-10">
+                                    <input type="text"  class="form-control" id="">
+                                    <!-- <textarea name="" id="" cols="30" rows="10" class="form-control">RT 002 RW 008 DSN. TANGGUNG DS. TANGGUNG KEC. CAMPURDARAT KABUPATEN TULUNGAGUNG, JATIM</textarea> -->
+                                </div>
+                            </div> --}}
+                            <strong class="now-ui-icons business_bulb-63"></strong> &nbsp;<small><em>Sebelum simpan,
+                                    pastikan semua data telah terisi sesuai kondisi di lapangan.</em></small>
 
+                        </div>
                     </div>
-                </div>
-                <div class="card">
-                    <div class="card-body text-center">
-                        <button class="btn btn-success">Simpan</button>
-
+                    <div class="card">
+                        <div class="card-body text-center">
+                            <button class="btn btn-success">Simpan</button>
+                        </div>
                     </div>
-                </div>
                 </form>
-            </div>
+            </form>
 
         </div>
     </div>
