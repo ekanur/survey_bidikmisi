@@ -500,7 +500,6 @@
                     listMotor.append(
                         "<li class='list-inline-item'><a href='#' class='badge badge-warning' id='editMotor"+ i++ +"' data-toggle='modal' data-target='#editMotor' data-merk='"+data.merk+"' data-tahun='"+data.tahun+"'><h6>"+data.merk+" ("+data.tahun+")</h6></a></li>"
                     );
-                    alert("<li class='list-inline-item'><a href='#' class='badge badge-warning' id='editMotor"+ i++ +"' data-toggle='modal' data-target='#editMotor' data-merk='"+data.merk+"' data-tahun='"+data.tahun+"'><h6>"+data.merk+" ("+data.tahun+")</h6></a></li>");
                     inputMotor.val(inputMotor.val()===''?JSON.stringify(data):inputMotor.val()+","+JSON.stringify(data));
                 });
                 listMobil.empty();
