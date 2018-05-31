@@ -19,7 +19,7 @@ class Angket extends Migration
             $table->string("isi_item_kuesioner", 800);
             $table->string("keterangan", 200)->nullable();
             $table->integer("calon_penerima_id");
-            $table->string("nim_surveyor", 15);
+            $table->string("nim_surveyor", 20);
             $table->softDeletes();
             $table->timestamps();
         });
