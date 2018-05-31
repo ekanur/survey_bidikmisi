@@ -6,12 +6,13 @@ use Illuminate\Http\Request;
 use App\Angket;
 use App\Calon_penerima;
 use Illuminate\Support\Facades\DB;
+use Session;
 
 class AngketController extends Controller
 {
     public function index($calon_penerima_id)
     {
-        $nim_surveyor = 1533430596;
+        // $nim_surveyor = session('userID');
         $angket = Angket::select('id', 'nama_item_kuesioner', 'isi_item_kuesioner')->where([['calon_penerima_id', "=", $calon_penerima_id], ['keterangan', '=', null]])->get();
 
         $detail_calon_penerima = $this->getDetailCalonPenerima($calon_penerima_id);
@@ -45,7 +46,7 @@ class AngketController extends Controller
         $data = $this->prepareData($request);
 
         $calon_penerima_id = $request->calon_penerima_id;
-        $nim_surveyor = 1533430596;
+        $nim_surveyor = session('userID');
         $timestamp = date("Y-m-d H:i:s");
 
         $new_angket = array();
@@ -73,7 +74,7 @@ class AngketController extends Controller
     public function update(Request $request)
     {
         $calon_penerima_id = $request->calon_penerima_id;
-        $nim_surveyor = 1533430596;
+        $nim_surveyor = session('userID');
         $timestamp = date("Y-m-d H:i:s");
 
         $data = $this->prepareData($request);

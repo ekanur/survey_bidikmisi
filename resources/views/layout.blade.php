@@ -90,12 +90,13 @@
                                 <li class="nav-item dropdown">
                                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                         <i class="now-ui-icons users_single-02"></i>
+                                        {{ session('userID') }}
                                         <p>
                                             <span class="d-lg-none d-md-block">User</span>
                                         </p>
                                     </a>
                                     <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
-                                        <a class="dropdown-item" href="#">Logout</a>
+                                        <a class="dropdown-item" href="{{ url("/servicelogout") }}">Logout</a>
                                     </div>
                                 </li>
                                 
