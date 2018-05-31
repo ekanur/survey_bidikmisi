@@ -12,9 +12,9 @@ class AngketController extends Controller
     public function index($calon_penerima_id)
     {
         $nim_surveyor = 1533430596;
-        $angket = Angket::select('id', 'nama_item_kuesioner', 'isi_item_kuesioner')->where([['calon_penerima_id', "=", $calon_penerima_id], ["nim_surveyor", "=", $nim_surveyor], ['keterangan', '=', null]])->get();
+        $angket = Angket::select('id', 'nama_item_kuesioner', 'isi_item_kuesioner')->where([['calon_penerima_id', "=", $calon_penerima_id], ['keterangan', '=', null]])->get();
 
-        $detail_calon_penerima = $this->getDetailCalonPenerima($calon_penerima_id, $nim_surveyor);
+        $detail_calon_penerima = $this->getDetailCalonPenerima($calon_penerima_id);
        
         if (sizeof($angket) == 0) {
             return view("angket", compact("calon_penerima_id", 'detail_calon_penerima'));
@@ -119,8 +119,8 @@ class AngketController extends Controller
         return $data;
     }
 
-    function getDetailCalonPenerima($id, $nim_surveyor){
-        $calon_penerima = Calon_penerima::select("no_pendaftaran")->where([["id", "=", $id],["nim_surveyor", "=", $nim_surveyor]])->first();
+    function getDetailCalonPenerima($id){
+        $calon_penerima = Calon_penerima::select("no_pendaftaran")->where("id", $id)->first();
 
         $query = 'SELECT b.id_peserta_didik,u.jjg_kd,b.cmhs_nm,"c".jalur_nm,
         b.cmhs_jenis_kelamin,

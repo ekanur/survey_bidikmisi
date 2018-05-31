@@ -7,7 +7,7 @@
         <div class="header text-center">
             <h2 class="title">Angket Survey Lapangan</h2>
             <p class="category">Masukan data sesuai kondisi di lapangan. Baca
-                <a target="_blank" href="https://github.com/mouse0270">buku manual</a>.
+                <a target="_blank" href="">buku manual</a>.
                 <!-- <a href="http://bootstrap-notify.remabledesigns.com/" target="_blank">full documentation.</a> -->
             </p>
         </div>

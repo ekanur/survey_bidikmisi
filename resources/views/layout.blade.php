@@ -62,7 +62,7 @@
                                     <span class="navbar-toggler-bar bar3"></span>
                                 </button>
                             </div>
-                            <a class="navbar-brand" href="#pablo">Survey "MELENIA AYU SAPUTRI"</a>
+                            <a class="navbar-brand" href="#pablo">@if(isset($detail_calon_penerima[0]->cmhs_nm)) Survey "{{$detail_calon_penerima[0]->cmhs_nm}}" @endif</a>
                         </div>
                         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navigation" aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation">
                             <span class="navbar-toggler-bar navbar-kebab"></span>

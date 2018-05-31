@@ -9,7 +9,7 @@ class IndexController extends Controller
 {
     public function index(){
         $nim_surveyor = 1533430596;
-        $calon_penerima = Calon_penerima::where("nim_surveyor", $nim_surveyor)->get();
+        $calon_penerima = Calon_penerima::all();
         // dd($calon_penerima);
         return view("dashboard", compact('calon_penerima'));
     }
