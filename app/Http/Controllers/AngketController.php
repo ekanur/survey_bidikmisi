@@ -6,7 +6,6 @@ use Illuminate\Http\Request;
 use App\Angket;
 use App\Calon_penerima;
 use Illuminate\Support\Facades\DB;
-use Session;
 
 class AngketController extends Controller
 {

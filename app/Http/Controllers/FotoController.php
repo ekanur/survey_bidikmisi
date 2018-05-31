@@ -41,7 +41,7 @@ class FotoController extends Controller
             "kamar_mandi" => (is_null($foto_kamar_mandi)) ? $request->foto_kamar_mandi_lama : $foto_kamar_mandi->store("public/foto_kamar_mandi")
         ));
 
-        $nim_surveyor = 1533430596;
+        $nim_surveyor = session("userID");
 
         $angket = Angket::updateOrCreate(["calon_penerima_id" => $request->calon_penerima_id, "keterangan"=> "is_photo", "nim_surveyor"=>$nim_surveyor], ["isi_item_kuesioner"=>json_encode($foto),"nama_item_kuesioner"=>"photo", "calon_penerima_id"=>$request->calon_penerima_id, "keterangan"=>'is_photo', 'nim_surveyor' => $nim_surveyor]);
 
