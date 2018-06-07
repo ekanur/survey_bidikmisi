@@ -94,7 +94,7 @@ class AngketController extends Controller
     }
 
     function prepareData($request) {
-        $penghasilan = ($request->hasil_ayah+$request->hasil_ibu+$request->hasil_wali)/$request->jumlah_penghuni_rumah;
+        $penghasilan = round(($request->hasil_ayah+$request->hasil_ibu+$request->hasil_wali)/$request->jumlah_penghuni_rumah);
 
         $data['ayah'] = array("ayah" => array("value" => $request->ayah, "keterangan" => $request->keterangan_ayah), "nilai"=>$request->ayah);
         $data['ibu'] = array("ibu" => array("value" => $request->ibu, "keterangan" => $request->keterangan_ibu), "nilai"=>$request->ibu);
