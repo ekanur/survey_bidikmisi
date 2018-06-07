@@ -564,21 +564,21 @@
                                 <div class="col-sm-12">
                                     <div class="form-check form-check-radio form-check-inline">
                                         <label class="form-check-label">
-                                            <input class="form-check-input" type="radio" name="kriteria" id="" value="30" onchange="changed(this)">
+                                            <input class="form-check-input" type="radio" name="kriteria" id="" value="30" {{ $data_angket['kriteria']==30 ? 'checked' : '' }} onchange="changed(this)">
                                             <span class="form-check-sign"></span>
                                             Sangat Layak
                                         </label>
                                     </div>
                                     <div class="form-check form-check-radio form-check-inline">
                                         <label class="form-check-label">
-                                            <input class="form-check-input" type="radio" name="kriteria" id="" value="20" onchange="changed(this)">
+                                            <input class="form-check-input" type="radio" name="kriteria" id="" value="20" {{ $data_angket['kriteria']==20 ? 'checked' : '' }} onchange="changed(this)">
                                             <span class="form-check-sign"></span>
                                             Layak
                                         </label>
                                     </div>
                                     <div class="form-check form-check-radio form-check-inline">
                                         <label class="form-check-label" onchange="changed(this)">
-                                            <input class="form-check-input" type="radio" name="kriteria" id="" value="10">
+                                            <input class="form-check-input" type="radio" name="kriteria" id="" value="10" {{ $data_angket['kriteria']==10 ? 'checked' : '' }}>
                                             <span class="form-check-sign"></span>
                                             Tidak Layak
                                         </label>

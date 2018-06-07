@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Calon_penerima;
+use App\Angket;
 
 class IndexController extends Controller
 {
