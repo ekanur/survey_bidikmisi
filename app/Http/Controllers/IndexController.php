@@ -20,7 +20,7 @@ class IndexController extends Controller
 
         		$penerima->nilai = $nilai;
         	}else{
-        		$penerima->nilai =0;
+        		$penerima->nilai = 0;
         	}
         	
 
