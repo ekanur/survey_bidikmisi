@@ -79,7 +79,7 @@
       language: {
       search: "_INPUT_",
       searchPlaceholder: "Search records",
-      order: [[ 0, 'asc' ], [ 1, 'desc' ]]
+      order: [[ 0, 'asc' ], [ 3, 'desc' ]]
       }
 
     });
