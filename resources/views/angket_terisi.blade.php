@@ -203,6 +203,7 @@
                                 <label for="" class="col-sm-2 col-form-label">Penghasilan Ayah</label>
                                 <div class="col-sm-2">
                                     <span>Rp. {{number_format(intval($detail_calon_penerima[0]->hasil_ayah))}}</span>
+                                    <input type="hidden" name="hasil_ayah" value="{{ intval($detail_calon_penerima[0]->hasil_ayah) }}">
                                 </div>
                                 <div class="col-sm-3">
                                     <select name="jenis_penghasilan_ayah" id="" class="form-control" onchange="changed(this)">
@@ -237,6 +238,7 @@
                                 <label for="" class="col-sm-2 col-form-label">Penghasilan Ibu</label>
                                 <div class="col-sm-2">
                                     <span>Rp. {{number_format(intval($detail_calon_penerima[0]->hasil_ibu))}}</span>
+                                    <input type="hidden" name="hasil_ibu" value="{{ intval($detail_calon_penerima[0]->hasil_ibu) }}">
                                 </div>
                                 <div class="col-sm-3">
                                     <select name="jenis_penghasilan_ibu" id="" class="form-control" onchange="changed(this)">
@@ -271,6 +273,7 @@
                                 <label for="" class="col-sm-2 col-form-label">Penghasilan Wali</label>
                                 <div class="col-sm-2">
                                     <span>Rp. {{number_format(intval($detail_calon_penerima[0]->hasil_wali))}}</span>
+                                    <input type="hidden" name="hasil_wali" value="{{ intval($detail_calon_penerima[0]->hasil_wali) }}">
                                 </div>
                                 <div class="col-sm-3">
                                     <select name="jenis_penghasilan_wali" id="" class="form-control" onchange="changed(this)">
@@ -557,6 +560,32 @@
                         </div>
                         <div class="card">
                             <div class="card-body text-center">
+                                <div class="form-group row">
+                                <div class="col-sm-12">
+                                    <div class="form-check form-check-radio form-check-inline">
+                                        <label class="form-check-label">
+                                            <input class="form-check-input" type="radio" name="kriteria" id="" value="30" onchange="changed(this)">
+                                            <span class="form-check-sign"></span>
+                                            Sangat Layak
+                                        </label>
+                                    </div>
+                                    <div class="form-check form-check-radio form-check-inline">
+                                        <label class="form-check-label">
+                                            <input class="form-check-input" type="radio" name="kriteria" id="" value="20" onchange="changed(this)">
+                                            <span class="form-check-sign"></span>
+                                            Layak
+                                        </label>
+                                    </div>
+                                    <div class="form-check form-check-radio form-check-inline">
+                                        <label class="form-check-label" onchange="changed(this)">
+                                            <input class="form-check-input" type="radio" name="kriteria" id="" value="10">
+                                            <span class="form-check-sign"></span>
+                                            Tidak Layak
+                                        </label>
+                                    </div>
+                                    
+                                </div>
+                            </div>
                                 <button class="btn btn-success" id="btn_simpan" disabled>Simpan</button>
 
                             </div>
@@ -610,6 +639,9 @@
                     break;
                 case 'jumlah_ternak':
                     name = 'ternak';
+                    break;
+                case 'kriteria':
+                    name = 'kriteria';
                     break;
             }
             insertEdited(name);

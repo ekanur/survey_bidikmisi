@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Angket;
 use App\Calon_penerima;
 use Illuminate\Support\Facades\DB;
+use HitungAngketController;
 
 class AngketController extends Controller
 {
@@ -26,16 +27,17 @@ class AngketController extends Controller
         }
 
         //dd(sizeof($angket));
-
+        // $nilai = array();
         for ($i = 0; $i < sizeof($angket); $i++) {
             $key = $angket[$i]['nama_item_kuesioner'];
             $data_angket[$key] = $angket[$i]['isi_item_kuesioner']->$key;
+            // $nilai[$i] = $this->nilaiPenghasilanAyah($data_angket[$key]);
 
             // echo "<pre>";var_dump($angket[key($angket[$i]['item_kuesioner'])]); echo $i;
             // $angket[key($angket[$i]['item_kuesioner'])] = "hello";
         }
         
-        // dd($detail_calon_penerima);
+        // $key_not_counted = ['jumlah_kakak','jumlah_adek','jumlah_kuliah','jumlah_penghuni_rumah', 'catatatan'];
 
         return view("angket_terisi", compact('data_angket', 'calon_penerima_id', 'detail_calon_penerima'));
     }
@@ -50,10 +52,12 @@ class AngketController extends Controller
 
         $new_angket = array();
         foreach ($data as $key => $value) {
-
+            $nilai = $value['nilai'];
+            unset($value['nilai']);
             $insert = array(
                 "nama_item_kuesioner" => $key,
                 "isi_item_kuesioner" => json_encode($value),
+                "nilai" => $nilai,
                 "calon_penerima_id" => $calon_penerima_id,
                 "nim_surveyor" => $nim_surveyor,
                 "created_at" => $timestamp
@@ -73,48 +77,53 @@ class AngketController extends Controller
     public function update(Request $request)
     {
         $calon_penerima_id = $request->calon_penerima_id;
-        $nim_surveyor = session('userID');
+        // $nim_surveyor = session('userID');
         $timestamp = date("Y-m-d H:i:s");
 
         $data = $this->prepareData($request);
         $edited = json_decode($request->editedData);
         foreach ($edited as $value) {
-            $angket = Angket::where('calon_penerima_id', $calon_penerima_id)->where('nama_item_kuesioner', $value)->first();
-            $angket->isi_item_kuesioner = json_encode($data[$value]);
-            $angket->updated_at = $timestamp;
-            $angket->save();
+            // $angket = Angket::where('calon_penerima_id', $calon_penerima_id)->where('nama_item_kuesioner', $value)->first();
+            // $angket->isi_item_kuesioner = json_encode($data[$value]);
+            // $angket->updated_at = $timestamp;
+            // $angket->save();
+            $angket = Angket::updateOrCreate(['calon_penerima_id' => $calon_penerima_id, 'nama_item_kuesioner' => $value], ['isi_item_kuesioner' => json_encode($data[$value]), 'nilai'=>$data[$value]['nilai'], 'updated_at' => $timestamp]);
         }
 
         return redirect()->to('/angket/'.$calon_penerima_id);
     }
 
     function prepareData($request) {
-        $data['ayah'] = array("ayah" => array("value" => $request->ayah, "keterangan" => $request->keterangan_ayah));
-        $data['ibu'] = array("ibu" => array("value" => $request->ibu, "keterangan" => $request->keterangan_ibu));
-        $data['kerja_ayah'] = array("kerja_ayah" => array("value" => $request->kerja_ayah, "keterangan" => $request->keterangan_kerja_ayah));
-        $data['kerja_ibu'] = array("kerja_ibu" => array("value" => $request->kerja_ibu, "keterangan" => $request->keterangan_kerja_ibu));
-        $data['pendidikan_ayah_ibu'] = array("pendidikan_ayah_ibu" => array("value" => $request->pendidikan_ayah_ibu, "keterangan" => $request->keterangan_pendidikan_ayah_ibu));
-        $data['penghasilan_ayah'] = array("penghasilan_ayah" => array("value" => $request->penghasilan_ayah, "jenis" => $request->jenis_penghasilan_ayah, "keterangan" => $request->keterangan_penghasilan_ayah));
-        $data['penghasilan_ibu'] = array("penghasilan_ibu" => array("value" => $request->penghasilan_ibu, "jenis" => $request->jenis_penghasilan_ibu, "keterangan" => $request->keterangan_penghasilan_ibu));
-        $data['penghasilan_wali'] = array("penghasilan_wali" => array("value" => $request->penghasilan_wali, "jenis" => $request->jenis_penghasilan_wali, "keterangan" => $request->keterangan_penghasilan_wali));
+        $penghasilan = ($request->hasil_ayah+$request->hasil_ibu+$request->hasil_wali)/$request->jumlah_penghuni_rumah;
 
-        $data['alat_komunikasi'] = array("alat_komunikasi" => array("value" => $request->komunikasi, "jumlah_hp" => $request->jumlah_hp));
-        $data['jumlah_penghuni_rumah'] = array("jumlah_penghuni_rumah" => $request->jumlah_penghuni_rumah);
-        $data['jumlah_kakak'] = array("jumlah_kakak" => $request->jumlah_kakak);
-        $data['jumlah_adek'] = array("jumlah_adek" => $request->jumlah_adek);
-        $data['jumlah_kuliah'] = array("jumlah_kuliah" => $request->jumlah_kuliah);
-        $data['kepemilikan_rumah'] = array("kepemilikan_rumah" => $request->kepemilikan_rumah);
-        $data['luas_tanah'] = array("luas_tanah" => $request->luas_tanah);
-        $data['luas_bangunan'] = array("luas_bangunan" => $request->luas_bangunan);
-        $data['daya_listrik'] = array("daya_listrik" => $request->daya_listrik);
-        $data['sumber_air'] = array("sumber_air" => $request->sumber_air);
-        $data['mck'] = array("mck" => $request->mck);
-        $data['motor'] = array("motor" => json_decode("[" . $request->motor . "]"));
-        $data['mobil'] = array("mobil" => json_decode("[" . $request->mobil . "]"));
+        $data['ayah'] = array("ayah" => array("value" => $request->ayah, "keterangan" => $request->keterangan_ayah), "nilai"=>$request->ayah);
+        $data['ibu'] = array("ibu" => array("value" => $request->ibu, "keterangan" => $request->keterangan_ibu), "nilai"=>$request->ibu);
+        $data['kerja_ayah'] = array("kerja_ayah" => array("value" => $request->kerja_ayah, "keterangan" => $request->keterangan_kerja_ayah), "nilai"=>$request->kerja_ayah);
+        $data['kerja_ibu'] = array("kerja_ibu" => array("value" => $request->kerja_ibu, "keterangan" => $request->keterangan_kerja_ibu), "nilai"=>$request->kerja_ibu);
+        $data['pendidikan_ayah_ibu'] = array("pendidikan_ayah_ibu" => array("value" => $request->pendidikan_ayah_ibu, "keterangan" => $request->keterangan_pendidikan_ayah_ibu), "nilai"=>$request->pendidikan_ayah_ibu);
+        $data['penghasilan_ayah'] = array("penghasilan_ayah" => array("value" => $request->penghasilan_ayah, "jenis" => $request->jenis_penghasilan_ayah, "keterangan" => $request->keterangan_penghasilan_ayah), "nilai"=>$penghasilan);
+        $data['penghasilan_ibu'] = array("penghasilan_ibu" => array("value" => $request->penghasilan_ibu, "jenis" => $request->jenis_penghasilan_ibu, "keterangan" => $request->keterangan_penghasilan_ibu), "nilai"=>0);
+        $data['penghasilan_wali'] = array("penghasilan_wali" => array("value" => $request->penghasilan_wali, "jenis" => $request->jenis_penghasilan_wali, "keterangan" => $request->keterangan_penghasilan_wali), "nilai"=>0);
 
-        $data['luas_sawah'] = array("luas_sawah" => $request->luas_sawah);
-        $data['ternak'] = array("ternak" => array("jenis" => $request->ternak, "jumlah_ternak" => $request->jumlah_ternak));
-        $data['catatan'] = array("catatan" => $request->catatan);
+        $data['alat_komunikasi'] = array("alat_komunikasi" => array("value" => $request->komunikasi, "jumlah_hp" => $request->jumlah_hp), "nilai"=>$this->nilaiAlatKomunikasi($request->komunikasi));
+        $data['jumlah_penghuni_rumah'] = array("jumlah_penghuni_rumah" => $request->jumlah_penghuni_rumah, 'nilai'=>0);
+        $data['jumlah_kakak'] = array("jumlah_kakak" => $request->jumlah_kakak, 'nilai'=>0);
+        $data['jumlah_adek'] = array("jumlah_adek" => $request->jumlah_adek, 'nilai'=>0);
+        $data['jumlah_kuliah'] = array("jumlah_kuliah" => $request->jumlah_kuliah, 'nilai'=>0);
+        $data['kepemilikan_rumah'] = array("kepemilikan_rumah" => $request->kepemilikan_rumah, 'nilai'=>$request->kepemilikan_rumah);
+        $data['luas_tanah'] = array("luas_tanah" => $request->luas_tanah, 'nilai'=>0);
+        $data['luas_bangunan'] = array("luas_bangunan" => $request->luas_bangunan, 'nilai'=>0);
+        $data['daya_listrik'] = array("daya_listrik" => $request->daya_listrik, 'nilai'=>$request->daya_listrik);
+        $data['sumber_air'] = array("sumber_air" => $request->sumber_air, 'nilai'=>$request->sumber_air);
+        $data['mck'] = array("mck" => $request->mck, 'nilai'=>$request->mck);
+        $data['motor'] = array("motor" => json_decode("[" . $request->motor . "]"), 'nilai'=>0);
+        $data['mobil'] = array("mobil" => json_decode("[" . $request->mobil . "]"), 'nilai'=>0);
+
+        $data['luas_sawah'] = array("luas_sawah" => $request->luas_sawah, 'nilai'=>0);
+        $data['ternak'] = array("ternak" => array("jenis" => $request->ternak, "jumlah_ternak" => $request->jumlah_ternak), 'nilai'=>0);
+        $data['catatan'] = array("catatan" => $request->catatan, 'nilai'=>0);
+
+        $data['kriteria'] = array("kriteria" => $request->kriteria, 'nilai'=>$request->kriteria);
 
         return $data;
     }

@@ -10,4 +10,20 @@ use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 class Controller extends BaseController
 {
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
+
+    public function nilaiAlatKomunikasi($array_komunikasi){
+    	$nilai = 6;
+
+    	foreach ($array_komunikasi as $alat_komunikasi) {
+    		if($alat_komunikasi == 'telepon_rumah'){
+    			$nilai = $nilai-1;
+    		}elseif($alat_komunikasi == 'hp'){
+    			$nilai = $nilai-2;
+    		}elseif($alat_komunikasi == 'internet'){
+    			$nilai = $nilai-3;
+    		}
+    	}
+
+    	return $nilai;
+    }
 }

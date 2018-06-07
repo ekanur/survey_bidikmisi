@@ -26,6 +26,9 @@
                                                 <th>
                                                     Sekolah Asal
                                                 </th>
+                                                <th>
+                                                    Nilai
+                                                </th>
                                                 <th class="text-right">
                                                     Survey
                                                 </th>
@@ -43,6 +46,9 @@
                                         </td>
                                         <td>
                                             {{$calon_penerima->sekolah_asal}}
+                                        </td>
+                                        <td>
+                                            {{ $calon_penerima->nilai }}
                                         </td>
                                         <td class="text-right">
                                             <a href="{{ url("/angket/".$calon_penerima->id) }}"><i class="now-ui-icons files_single-copy-04"></i></a>
