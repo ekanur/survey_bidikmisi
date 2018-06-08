@@ -48,10 +48,10 @@ class Authenticate_josso {
                     // $admin = Admin::where("nip","=", $user->name)->first();
                     // dd($admin);
                     // $dosen = DB::connection("pgsql_3")->table("m_dosen")->join("m_prodi", "m_dosen.pro_kd", "=", "m_prodi.pro_kd")->select("m_prodi.pro_kd", "m_prodi.pro_nm")->where("m_dosen.dsn_nip", "=", $user->name)->get();
-                    $allowed_user = ['1993030120160541', '197608252014091001'];
-                    if(!in_array($user->name, $allowed_user)){
-                        return redirect("https://profil.um.ac.id");
-                    }
+                    // $allowed_user = ['1993030120160541', '197608252014091001'];
+                    // if(!in_array($user->name, $allowed_user)){
+                    //     return redirect("https://profil.um.ac.id");
+                    // }
                     $request->merge(array("idUser" =>$user->name));
                     Session::put('userID', $user->name);
 
